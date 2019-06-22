@@ -1,0 +1,11 @@
+{
+"name": "토끼",
+"skills": [],
+"level": 1,
+"exp": 20,
+"hp": 10,
+"maxhp": 10,
+"message": "깡충!",
+"damage": 1,
+"drops": ["토끼 가죽"]
+}

@@ -1,0 +1,22 @@
+{
+"goto":["모래마을"],
+"npcs":{
+"미르":{
+"name":"미르",
+"message":["안녕!","난 미르찡이당!","모래마을 모래 탑에서 인생사진을 찍어봐!"],
+"type":"일반"
+},
+"리즈":{
+"name":"리즈",
+"message":["이봐 물건 줘봐 고쳐줄게","이봐 물건좀 줘보게"],
+"price":5400,
+"type":"대장장이"
+}
+},
+"Monster":["돼지","돼지","돼지","맷돼지","맷돼지"],
+"bgm":"https://youtu.be/A1h0AWGtYEI",
+"Users":[],
+"Drops":[],
+"Metadata":"W29iamVjdCBPYmplY3Rd",
+"npcList": ["리즈","미르"]
+}

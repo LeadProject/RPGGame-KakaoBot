@@ -1,0 +1,22 @@
+{
+"goto":["이즈마을"],
+"npcs":{
+"루안":{
+"name":"루안",
+"message":["안녕!","룰루랄라~","모래마을 모래 탑에서 인생사진을 찍어봐!"],
+"type":"일반"
+},
+"픽비수":{
+"name":"픽비수",
+"message":["이봐 물건 줘봐 고쳐줄게!"],
+"price":4500,
+"type":"대장장이"
+}
+},
+"Monster":["돼지","돼지","돼지","당나귀","상어"],
+"bgm":"https://youtu.be/A1h0AWGtYEI",
+"Users":[],
+"Drops":[],
+"Metadata":"W29iamVjdCBPYmplY3Rd",
+"npcList": ["루안","픽비수"]
+}

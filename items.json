@@ -1,0 +1,333 @@
+{
+	"공기": {
+		"name": "공기",
+		"Id": 0,
+		"type": "블럭",
+		"nbt": "null"
+	},
+	"돌": {
+		"name": "돌",
+		"Id": 1,
+		"type": "블럭"
+	},
+	"잔디": {
+		"name": "잔디",
+		"Id": 2,
+		"type": "블럭"
+	},
+	"흙": {
+		"name": "흙",
+		"Id": 3,
+		"type": "블럭"
+	},
+	"나무검": {
+		"name": "나무검",
+		"Id": 4,
+		"type": "장비",
+		"damage": 2,
+		"Durability": 900,
+		"Durability#Player": [],
+		"allow enc": [
+			"날카로움",
+			"강타",
+			"내구도",
+			"살충",
+			"약탈"
+		]
+	},
+	"지도": {
+		"name": "지도",
+		"Id": 5,
+		"type": "아이템",
+		"Data": {
+			"nbt": "null"
+		}
+	},
+	"돌검": {
+		"name": "돌검",
+		"Id": 6,
+		"type": "장비",
+		"damage": 4,
+		"Durability": 700,
+		"Durability#Player": [],
+		"allow enc": [
+			"날카로움",
+			"강타",
+			"내구도",
+			"살충",
+			"약탈"
+		]
+	},
+	"철검": {
+		"name": "철검",
+		"Id": 7,
+		"type": "장비",
+		"damage": 7,
+		"Durability": 900,
+		"Durability#Player": [],
+		"allow enc": [
+			"날카로움",
+			"강타",
+			"내구도",
+			"살충",
+			"약탈"
+		]
+	},
+	"스테이크": {
+		"name": "스테이크",
+		"Id": 8,
+		"type": "음식",
+		"food": 10
+	},
+	"물이 채워진 병": {
+		"name": "물이 채워진 병",
+		"Id": 9,
+		"type": "물"
+	},
+	"불": {
+		"name": "불",
+		"Id": 10,
+		"type": "object"
+	},
+	"가죽": {
+		"name": "가죽",
+		"Id": 11,
+		"type": "기타"
+	},
+	"토끼 가죽": {
+		"name": "토끼 가죽",
+		"Id": 12,
+		"type": "기타"
+	},
+	"상어의 이빨": {
+		"name": "상어의 이빨",
+		"Id": 13,
+		"type": "기타"
+	},
+	"복어의 가시": {
+		"name": "복어의 가시",
+		"Id": 14,
+		"type": "기타"
+	},
+	"다이아몬드 검": {
+		"damage": 13,
+		"Durability": 1600,
+		"Durability#Player": [],
+		"allow enc": [
+			"날카로움",
+			"강타",
+			"내구도",
+			"살충",
+			"약탈"
+		],
+		"name": "다이아몬드 검",
+		"Id": 15,
+		"type": "장비"
+	},
+	"나무 곡괭이": {
+		"damage": 3,
+		"Durability": 500,
+		"Durability#Player": [],
+		"allow enc": [
+			"내구도",
+			"효율",
+			"행운"
+		],
+		"name": "나무 곡괭이",
+		"Id": 16,
+		"type": "곡괭이"
+	},
+	"돌 곡괭이": {
+		"damage": 5,
+		"Durability": 900,
+		"Durability#Player": [],
+		"allow enc": [
+			"내구도",
+			"효율",
+			"행운"
+		],
+		"name": "돌 곡괭이",
+		"Id": 17,
+		"type": "곡괭이"
+	},
+	"철 곡괭이": {
+		"damage": 7,
+		"Durability": 1200,
+		"Durability#Player": [],
+		"allow enc": [
+			"내구도",
+			"효율",
+			"행운"
+		],
+		"name": "철 곡괭이",
+		"Id": 18,
+		"type": "곡괭이"
+	},
+	"다이아몬드 곡괭이": {
+		"damage": 12,
+		"Durability": 1900,
+		"Durability#Player": [],
+		"allow enc": [
+			"내구도",
+			"효율",
+			"행운"
+		],
+		"name": "다이아몬드 곡괭이",
+		"Id": 19,
+		"type": "곡괭이"
+	},
+	"날카로움-I": {
+		"name": "날카로움-I",
+		"Id": 20,
+		"type": "마법부여 아이템",
+		"enchant": [
+			"날카로움:1"
+		]
+	},
+	"날카로움-II": {
+		"name": "날카로움-II",
+		"Id": 21,
+		"type": "마법부여 아이템",
+		"enchant": [
+			"날카로움:2"
+		]
+	},
+	"날카로움-III": {
+		"name": "날카로움-III",
+		"Id": 22,
+		"type": "마법부여 아이템",
+		"enchant": [
+			"날카로움:3"
+		]
+	},
+	"날카로움-IV": {
+		"name": "날카로움-IV",
+		"Id": 23,
+		"type": "마법부여 아이템",
+		"enchant": [
+			"날카로움:4"
+		]
+	},
+	"날카로움-V": {
+		"name": "날카로움-V",
+		"Id": 24,
+		"type": "마법부여 아이템",
+		"enchant": [
+			"날카로움:5"
+		]
+	},
+	"내구도-I": {
+		"name": "내구도-I",
+		"Id": 25,
+		"type": "마법부여 아이템",
+		"enchant": [
+			"내구도:1"
+		]
+	},
+	"내구도-II": {
+		"name": "내구도-II",
+		"Id": 26,
+		"type": "마법부여 아이템",
+		"enchant": [
+			"내구도:2"
+		]
+	},
+	"내구도-III": {
+		"name": "내구도-III",
+		"Id": 27,
+		"type": "마법부여 아이템",
+		"enchant": [
+			"내구도:3"
+		]
+	},
+	"마검 아포칼립스": {
+		"damage": 830,
+		"Durability": 820000,
+		"Durability#Player": [],
+		"allow enc": [
+			"날카로움",
+			"강타",
+			"내구도",
+			"살충",
+			"약탈"
+		],
+		"name": "마검 아포칼립스",
+		"Id": 28,
+		"type": "장비"
+	},
+	"에메랄드 검": {
+		"damage": 21,
+		"Durability": 3600,
+		"Durability#Player": [],
+		"allow enc": [
+			"날카로움",
+			"강타",
+			"내구도",
+			"살충",
+			"약탈"
+		],
+		"name": "에메랄드 검",
+		"Id": 29,
+		"type": "장비"
+	},
+	"옵시디언 검": {
+		"damage": 32,
+		"Durability": 5600,
+		"Durability#Player": [],
+		"allow enc": [
+			"날카로움",
+			"강타",
+			"내구도",
+			"살충",
+			"약탈"
+		],
+		"name": "옵시디언 검",
+		"Id": 30,
+		"type": "장비"
+	},
+	"견습기사의 강철검": {
+		"damage": 42,
+		"Durability": 7600,
+		"Durability#Player": [],
+		"allow enc": [
+			"날카로움",
+			"강타",
+			"내구도",
+			"살충",
+			"약탈"
+		],
+		"name": "견습기사의 강철검",
+		"Id": 31,
+		"type": "장비"
+	},
+	"왕실기사의 양날대검": {
+		"damage": 52,
+		"Durability": 8600,
+		"Durability#Player": [],
+		"allow enc": [
+			"날카로움",
+			"강타",
+			"내구도",
+			"살충",
+			"약탈"
+		],
+		"name": "왕실기사의 양날대검",
+		"Id": 32,
+		"type": "장비"
+	},
+	"황실 호위기사의 세이버": {
+		"damage": 72,
+		"Durability": 9600,
+		"Durability#Player": [],
+		"allow enc": [
+			"날카로움",
+			"강타",
+			"내구도",
+			"살충",
+			"약탈"
+		],
+		"name": "황실 호위기사의 세이버",
+		"Id": 33,
+		"type": "장비"
+	}
+}

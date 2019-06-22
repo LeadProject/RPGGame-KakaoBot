@@ -1,0 +1,11 @@
+{
+"name": "당나귀",
+"skills": [],
+"level": 3,
+"exp": 120,
+"hp": 30,
+"maxhp": 30,
+"message": "???",
+"damage": 1.5,
+"drops": ["가죽"]
+}

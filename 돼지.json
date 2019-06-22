@@ -1,0 +1,11 @@
+{
+"name": "돼지",
+"skills": [],
+"level": 2,
+"exp": 50,
+"hp": 15,
+"maxhp": 15,
+"message": "꿀꿀..",
+"damage": 1.5,
+"drops": ["스테이크"]
+}

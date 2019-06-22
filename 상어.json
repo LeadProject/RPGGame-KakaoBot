@@ -1,0 +1,11 @@
+{
+"name": "상어",
+"skills": [],
+"level": 21,
+"exp": 520,
+"hp": 270,
+"maxhp": 270,
+"message": "???",
+"damage": 7,
+"drops": ["상어의 이빨"]
+}
