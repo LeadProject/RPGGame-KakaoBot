@@ -62,11 +62,11 @@ const ITEM = JSON.parse(FileStream.read(RPG_SETTING + "items.json"));
 const MONSTER = RPG_SETTING + "Monsters/";
 //const MAP = JSON.parse(FileStream.read(RPG_SETTING + "map.json"))
 
-const BAR_1 = "??";
+const BAR_1 = "ğ„€";
 const BAR_2 = ":";
-const BAR_3 = "¥É";
+const BAR_3 = "Î™";
 const BAR_4 = "|";
-const BAR_5 = "?";
+const BAR_5 = "â¸½";
 
 /* Player Action */
 const PlayerAction = {};
@@ -88,30 +88,30 @@ function setHealthBar(health,max,tag,percent){
             if(health<perHp8){
             }
             else if(perHp8<=health && health<perHp8*2){
-                result += "?";
+                result += "â–";
             }
             else if(perHp8*2<=health && health < perHp8*3){
-                result += "?";
+                result += "â–";
             }
             else if(perHp8*3<=health && health < perHp8*4){
-                result += "?";
+                result += "â–";
             }
             else if(perHp8*4<=health && health < perHp8*5){
-                result += "?";
+                result += "â–Œ";
             }
             else if(perHp8*5<=health && health < perHp8*6){
-                result += "?"
+                result += "â–‹"
             }
             else if(perHp8*6<=health && health < perHp8*7){
-                result += "?";
+                result += "â–Š";
             }
             else if(perHp8*7<=health && health < perHp8*8){
-                result += "?";
+                result += "â–‰";
             }
             break;
             }
         health -= perHp;
-        result += "?";
+        result += "â–ˆ";
     }
     if(!percent){
         result = tag+": ("+hpTmp+"/"+max+")\n"+result;
@@ -127,7 +127,7 @@ function rm(msg, room) {
     Api.replyRoom(room, PREFIX + msg);
     /*var timeb = new Date().getTime();
     var ms = (timeb - timea);
-    Api.replyRoom(room, "ÀÀ´ä¼Óµµ: " + ms + "ms");*/
+    Api.replyRoom(room, "ì‘ë‹µì†ë„: " + ms + "ms");*/
 }
 objectBar = function(objectMin, objectMax, bar) {
     var length = 10;
@@ -145,7 +145,7 @@ function JSONSave(file, obj) {
 
 function makeMob() {
     for (var i = 10; i <= 118; i++) {
-        var fileon = "<?php\n\ndeclare(strict_types=1);\n\nnamespace LEADTV\\HexaMonster\\entity;\n\nuse pocketmine\\entity\\Monster;\nuse pocketmine\\entity\\Entity;\n\nclass CustomMob_" + i + " extends Monster{\n\n   public $networkId = " + i + ";\n   public const NETWORK_ID = " + i + ";\n   public $realName;\n   public $skill = 'Èú';\n   public $monsterSpeed = 0.4;\n   public $width = 0.6;\n   public $height = 1.95;\n\n\n   public function getRealName(){\n      return $this->realName;\n   }\n\n   public function setRealName($name){\n      $this->realName = $name;\n   }\n    public function getName() : string{\n    return 'CustomMob_" + i + "';\n    }\n}";
+        var fileon = "<?php\n\ndeclare(strict_types=1);\n\nnamespace LEADTV\\HexaMonster\\entity;\n\nuse pocketmine\\entity\\Monster;\nuse pocketmine\\entity\\Entity;\n\nclass CustomMob_" + i + " extends Monster{\n\n   public $networkId = " + i + ";\n   public const NETWORK_ID = " + i + ";\n   public $realName;\n   public $skill = 'í';\n   public $monsterSpeed = 0.4;\n   public $width = 0.6;\n   public $height = 1.95;\n\n\n   public function getRealName(){\n      return $this->realName;\n   }\n\n   public function setRealName($name){\n      $this->realName = $name;\n   }\n    public function getName() : string{\n    return 'CustomMob_" + i + "';\n    }\n}";
         FileStream.write("sdcard/Mobs/CustomMob_" + i + ".php", fileon);
     }
 }
@@ -193,7 +193,7 @@ function addInventory(player, item) {
 }
 
 function removeInventory(player, item, type) {
-    if (type == undefined) type = "¾øÀ½";
+    if (type == undefined) type = "ì—†ìŒ";
     if (isItem(item) == "true") {
         if (ITEM[item]["Durability"] !== undefined) {
             var ItemData = getDataInventory(player);
@@ -206,7 +206,7 @@ function removeInventory(player, item, type) {
             var finalData = JSONClean(Inv);
             FileStream.write(RPG_USER + "INVENTORY/" + player + ".json", finalData);
         }
-        if (type == "ÀåÂø") {
+        if (type == "ì¥ì°©") {
             var Inv = JSON.parse(FileStream.read(RPG_USER + "INVENTORY/" + player + ".json"));
             Inv.pop(item);
             var finalData = JSONClean(Inv);
@@ -252,28 +252,28 @@ function getItemInfo(item) {
     var Info = [];
     if (ITEM[item] == undefined) {
         Info.push(B);
-        Info.push("¡¤ ÀÌ¸§ : " + item);
-        Info.push("¡¤ ID : ?");
+        Info.push("Â· ì´ë¦„ : " + item);
+        Info.push("Â· ID : ?");
         Info.push(B);
     }
     if (ITEM[item] !== undefined) {
-        if (ITEM[item]["type"] == "Àåºñ") {
+        if (ITEM[item]["type"] == "ì¥ë¹„") {
             if (ITEM[item]["armor"] !== undefined) {
                 Info.push(B);
-                Info.push("¡¤ ÀÌ¸§ : " + ITEM[item]["name"]);
-                Info.push("¡¤ ID : " + ITEM[item]["Id"]);
-                Info.push("¡¤ Å¸ÀÔ : " + ITEM[item]["type"]);
-                Info.push("¡¤ ³»±¸µµ : ?/" + ITEM[item]["Durability"]);
-                Info.push("¡¤ º¸È£ : " + ITEM[item]["armor"]);
+                Info.push("Â· ì´ë¦„ : " + ITEM[item]["name"]);
+                Info.push("Â· ID : " + ITEM[item]["Id"]);
+                Info.push("Â· íƒ€ì… : " + ITEM[item]["type"]);
+                Info.push("Â· ë‚´êµ¬ë„ : ?/" + ITEM[item]["Durability"]);
+                Info.push("Â· ë³´í˜¸ : " + ITEM[item]["armor"]);
                 Info.push(B);
             }
             if (ITEM[item]["damage"] !== undefined) {
                 Info.push(B);
-                Info.push("¡¤ ÀÌ¸§ : " + ITEM[item]["name"]);
-                Info.push("¡¤ ID : " + ITEM[item]["Id"]);
-                Info.push("¡¤ Å¸ÀÔ : " + ITEM[item]["type"]);
-                Info.push("¡¤ ³»±¸µµ : ?/" + ITEM[item]["Durability"]);
-                Info.push("¡¤ µ¥¹ÌÁö : " + ITEM[item]["damage"]);
+                Info.push("Â· ì´ë¦„ : " + ITEM[item]["name"]);
+                Info.push("Â· ID : " + ITEM[item]["Id"]);
+                Info.push("Â· íƒ€ì… : " + ITEM[item]["type"]);
+                Info.push("Â· ë‚´êµ¬ë„ : ?/" + ITEM[item]["Durability"]);
+                Info.push("Â· ë°ë¯¸ì§€ : " + ITEM[item]["damage"]);
                 Info.push(B);
             }
         }
@@ -290,34 +290,34 @@ function GameToolInventory(player, room) {
     });
     for (var i = 0; i < inv.length; i++) {
     if (ITEM[inv[i]] == undefined){
-    	res.push("???????????\n["+i+"¹ø ½½·Ô] [?] " + inv[i] + " "+a[inv[i].toSource()]+"x");
+    	res.push("â•â•â•â•â•â•â•â•â•â•â•\n["+i+"ë²ˆ ìŠ¬ë¡¯] [?] " + inv[i] + " "+a[inv[i].toSource()]+"x");
     } else {
-    	res.push("???????????\n["+i+"¹ø ½½·Ô] ["+ITEM[inv[i]]["type"]+"] " + ITEM[inv[i]]["name"] + " "+a[inv[i].toSource()]+"x");
+    	res.push("â•â•â•â•â•â•â•â•â•â•â•\n["+i+"ë²ˆ ìŠ¬ë¡¯] ["+ITEM[inv[i]]["type"]+"] " + ITEM[inv[i]]["name"] + " "+a[inv[i].toSource()]+"x");
     }
     }
-    rm("::::: " + sender + " ´ÔÀÇ ÀÎº¥Åä¸® :::::\n" + res.join("\n"), room);
+    rm("::::: " + sender + " ë‹˜ì˜ ì¸ë²¤í† ë¦¬ :::::\n" + res.join("\n"), room);
 }
 
 function selectJob(player, job) {
-    if (job == "¸¶¹ı»ç") {
+    if (job == "ë§ˆë²•ì‚¬") {
         var sData = data(player);
-        sData["JOB"] = "¸¶¹ı»ç";
+        sData["JOB"] = "ë§ˆë²•ì‚¬";
         var finalData = JSONClean(sData);
         FileStream.write(RPG_USER + player + ".json", finalData);
     }
-    if (job == "Àü»ç") {
+    if (job == "ì „ì‚¬") {
         var sData = data(player);
-        sData["JOB"] = "Àü»ç";
+        sData["JOB"] = "ì „ì‚¬";
         var finalData = JSONClean(sData);
         FileStream.write(RPG_USER + player + ".json", finalData);
     }
-    if (job == "¹ö¼­Ä¿") {
+    if (job == "ë²„ì„œì»¤") {
         var sData = data(player);
-        sData["JOB"] = "¹ö¼­Ä¿";
+        sData["JOB"] = "ë²„ì„œì»¤";
         var finalData = JSONClean(sData);
         FileStream.write(RPG_USER + player + ".json", finalData);
     }
-    return "| Àü Á÷ |\n" + job + " À¸·Î ÀüÁ÷ ÇÏ¿´½À´Ï´Ù.";
+    return "| ì „ ì§ |\n" + job + " ìœ¼ë¡œ ì „ì§ í•˜ì˜€ìŠµë‹ˆë‹¤.";
 }
 
 function useSkill(player, skill) {
@@ -325,59 +325,59 @@ function useSkill(player, skill) {
         skill = JSON.parse(FileStream.read(RPG_SKILL + skill + ".json"));
         if (skill["damage"] !== 0) {
             mhp[player] -= skill["damage"];
-            return "| ½ºÅ³ »ç¿ë |\nÀÌ¸§ : " + skill["name"] + "\n¡¤ ¸ó½ºÅÍ¿¡°Ô " + skill["damage"] + " µ¥¹ÌÁö °ø°İ!";
+            return "| ìŠ¤í‚¬ ì‚¬ìš© |\nì´ë¦„ : " + skill["name"] + "\nÂ· ëª¬ìŠ¤í„°ì—ê²Œ " + skill["damage"] + " ë°ë¯¸ì§€ ê³µê²©!";
         } else if (skill["hp"] !== 0) {
             var sData = data(player);
             sData["HP"] += skill["hp"]
             var finalData = JSONClean(sData);
             FileStream.write(RPG_USER + player + ".json", finalData);
-            return "| ½ºÅ³ »ç¿ë |\nÀÌ¸§ : " + skill["name"] + "\n¡¤ Ã¼·Â " + skill["hp"] + " ÃæÀü!";
+            return "| ìŠ¤í‚¬ ì‚¬ìš© |\nì´ë¦„ : " + skill["name"] + "\nÂ· ì²´ë ¥ " + skill["hp"] + " ì¶©ì „!";
         } else if (skill["mana"] !== 0) {
             var sData = data(player);
             sData["MANA"] += skill["mana"]
             var finalData = JSONClean(sData);
             FileStream.write(RPG_USER + player + ".json", finalData);
-            return "| ½ºÅ³ »ç¿ë |\nÀÌ¸§ : " + skill["name"] + "\n¡¤ ¸¶³ª " + skill["mana"] + " ÃæÀü!";
+            return "| ìŠ¤í‚¬ ì‚¬ìš© |\nì´ë¦„ : " + skill["name"] + "\nÂ· ë§ˆë‚˜ " + skill["mana"] + " ì¶©ì „!";
         }
     } catch (e) {
-        return "¾ø´Â ½ºÅ³ ÀÔ´Ï´Ù.";
+        return "ì—†ëŠ” ìŠ¤í‚¬ ì…ë‹ˆë‹¤.";
     }
 }
 
 function Equipment(player, type, item) {
     if (getInventory(player).indexOf(item) == -1) {
-        return "¾ÆÀÌÅÛÀÌ ¾ø½À´Ï´Ù.";
+        return "ì•„ì´í…œì´ ì—†ìŠµë‹ˆë‹¤.";
     }
-    if (type == "¸Ó¸®") {
-        removeInventory(player, item, "ÀåÂø");
+    if (type == "ë¨¸ë¦¬") {
+        removeInventory(player, item, "ì¥ì°©");
         var sData = data(player);
         sData["Head"] = item;
         var finalData = JSONClean(sData);
         FileStream.write(RPG_USER + player + ".json", finalData);
     }
-    if (type == "¸öÅë") {
-        removeInventory(player, item, "ÀåÂø");
+    if (type == "ëª¸í†µ") {
+        removeInventory(player, item, "ì¥ì°©");
         var sData = data(player);
         sData["Chestplate"] = item;
         var finalData = JSONClean(sData);
         FileStream.write(RPG_USER + player + ".json", finalData);
     }
-    if (type == "´Ù¸®") {
-        removeInventory(player, item, "ÀåÂø");
+    if (type == "ë‹¤ë¦¬") {
+        removeInventory(player, item, "ì¥ì°©");
         var sData = data(player);
         sData["Leggings"] = item;
         var finalData = JSONClean(sData);
         FileStream.write(RPG_USER + player + ".json", finalData);
     }
-    if (type == "¹ß") {
-        removeInventory(player, item, "ÀåÂø");
+    if (type == "ë°œ") {
+        removeInventory(player, item, "ì¥ì°©");
         var sData = data(player);
         sData["Boots"] = item;
         var finalData = JSONClean(sData);
         FileStream.write(RPG_USER + player + ".json", finalData);
     }
-    if (type == "¼Õ") {
-        removeInventory(player, item, "ÀåÂø");
+    if (type == "ì†") {
+        removeInventory(player, item, "ì¥ì°©");
         var sData = data(player);
         sData["Hand"] = item;
         var finalData = JSONClean(sData);
@@ -390,33 +390,33 @@ function seeShop(player, type, item) {
     var place = pd["PLACE"];
     var shop = JSON.parse(FileStream.read(RPG_SETTING + "Shop/" + place + ".json"));
     if (shop == null) {
-        return "»óÁ¡ÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
+        return "ìƒì ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
     }
     if (type == "sell") {
         if (shop["sells"].indexOf(item) == -1) {
-            return item + " ¾ÆÀÌÅÛÀº ÆÇ¸Å ÇÒ¼ö ¾ø½À´Ï´Ù.";
+            return item + " ì•„ì´í…œì€ íŒë§¤ í• ìˆ˜ ì—†ìŠµë‹ˆë‹¤.";
         }
         if (getInventory(player).indexOf(item) == -1) {
-            return "¾ÆÀÌÅÛÀÌ ¾ø½À´Ï´Ù.";
+            return "ì•„ì´í…œì´ ì—†ìŠµë‹ˆë‹¤.";
         }
         removeInventory(player, shop[item]["name"]);
         var sData = data(player);
         sData["BRONZE"] += shop[item]["sell"];
         var finalData = JSONClean(sData);
         FileStream.write(RPG_USER + player + ".json", finalData);
-        return item + " À»(¸¦) ÆÇ¸Å ÇÏ¼Ì½À´Ï´Ù.\n¾òÀº ºê·ĞÁî : " + shop[item]["sell"] + " BRONZE";
+        return item + " ì„(ë¥¼) íŒë§¤ í•˜ì…¨ìŠµë‹ˆë‹¤.\nì–»ì€ ë¸Œë¡ ì¦ˆ : " + shop[item]["sell"] + " BRONZE";
     }
     if (type == "buy") {
         if (shop["buys"].indexOf(item) == -1) {
-            return item + " ¾ÆÀÌÅÛÀº ±¸¸Å ÇÒ¼ö ¾ø½À´Ï´Ù.";
+            return item + " ì•„ì´í…œì€ êµ¬ë§¤ í• ìˆ˜ ì—†ìŠµë‹ˆë‹¤.";
         }
-        if (ITEM[shop[item]["name"]]["type"] == "Àåºñ") {
+        if (ITEM[shop[item]["name"]]["type"] == "ì¥ë¹„") {
             if (getInventory(player).indexOf(ITEM[shop[item]["name"]]) != -1) {
-                return "¡Ø Àåºñ´Â ÇÑ°³¸¸ ¼ÒÀ¯ °¡´É ÇÕ´Ï´Ù.\nÃ¢°í¿¡ º¸°üÇÏ°Å³ª ¹ö·ÁÁÖ¼¼¿ä.";
+                return "â€» ì¥ë¹„ëŠ” í•œê°œë§Œ ì†Œìœ  ê°€ëŠ¥ í•©ë‹ˆë‹¤.\nì°½ê³ ì— ë³´ê´€í•˜ê±°ë‚˜ ë²„ë ¤ì£¼ì„¸ìš”.";
             }
         }
         if (shop[item]["buy"] >= pd["BRONZE"]) {
-            return "ºê·ĞÁî°¡ ºÎÁ·ÇÕ´Ï´Ù.";
+            return "ë¸Œë¡ ì¦ˆê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.";
         }
         if (pd["BRONZE"] >= shop[item]["buy"]) {
             addInventory(player, item);
@@ -424,22 +424,22 @@ function seeShop(player, type, item) {
             sData["BRONZE"] -= shop[item]["buy"];
             var finalData = JSONClean(sData);
             FileStream.write(RPG_USER + player + ".json", finalData);
-            return item + " À»(¸¦) ±¸¸Å ÇÏ¼Ì½À´Ï´Ù.";
+            return item + " ì„(ë¥¼) êµ¬ë§¤ í•˜ì…¨ìŠµë‹ˆë‹¤.";
         }
     }
-    if (type == "º¸±â") {
-        return "| " + place + " - »óÁ¡ |\n( ±¸¸Å ¹°Ç° )\n| " + shop["buys"].join("\n| ") + "\n( ÆÇ¸Å ¹°Ç° )\n| " + shop["sells"].join("\n| ");
+    if (type == "ë³´ê¸°") {
+        return "| " + place + " - ìƒì  |\n( êµ¬ë§¤ ë¬¼í’ˆ )\n| " + shop["buys"].join("\n| ") + "\n( íŒë§¤ ë¬¼í’ˆ )\n| " + shop["sells"].join("\n| ");
     }
-    if (type == "¾ÆÀÌÅÛº¸±â") {
-        return "| " + item + " |\n±¸¸Å°¡: " + shop[item]["buy"] + " ºê·ĞÁî\nÆÇ¸Å°¡: " + shop[item]["sell"] + " ºê·ĞÁî";
+    if (type == "ì•„ì´í…œë³´ê¸°") {
+        return "| " + item + " |\nêµ¬ë§¤ê°€: " + shop[item]["buy"] + " ë¸Œë¡ ì¦ˆ\níŒë§¤ê°€: " + shop[item]["sell"] + " ë¸Œë¡ ì¦ˆ";
     }
 }
 
 function GameToolRegister(room, msg, player, isGroupChat, replier, ImageDB, packageName, threadId) {
     if (c[player] == true) {
         if (msg == "Y") {
-            rm(Config["Prefix"] + " - È¸¿ø°¡ÀÔ ¿Ï·á", room);
-            var Inventory = ["³ª¹« °Ë", "Áöµµ", "½ºÅ×ÀÌÅ©"];
+            rm(Config["Prefix"] + " - íšŒì›ê°€ì… ì™„ë£Œ", room);
+            var Inventory = ["ë‚˜ë¬´ ê²€", "ì§€ë„", "ìŠ¤í…Œì´í¬"];
 
             var PlayerData = {
                 "nick": player,
@@ -459,7 +459,7 @@ function GameToolRegister(room, msg, player, isGroupChat, replier, ImageDB, pack
                 "NOW_QUEST": "x",
                 "ENTITY": [],
                 "EFFECT": [],
-                "PLACE": "ÀÌÁî¸¶À»",
+                "PLACE": "ì´ì¦ˆë§ˆì„",
                 "GameTool": 0,
                 "CRASTAL": 0,
                 "DARK_CRASTAL": 0,
@@ -476,8 +476,8 @@ function GameToolRegister(room, msg, player, isGroupChat, replier, ImageDB, pack
                 "Leggings": {},
                 "Boots": {},
                 "Hand": {},
-                "HairType": "ÀÏ¹İ",
-                "HeadType": "ÀÏ¹İ",
+                "HairType": "ì¼ë°˜",
+                "HeadType": "ì¼ë°˜",
                 "FIRST": time,
                 "STAT": {
                     "HP": 0,
@@ -491,10 +491,10 @@ function GameToolRegister(room, msg, player, isGroupChat, replier, ImageDB, pack
             c[player] = false;
         }
         if (msg == "N") {
-            rm("È¸¿ø°¡ÀÔÀÌ Ãë¼Ò µÇ¾ú½À´Ï´Ù.", room);
+            rm("íšŒì›ê°€ì…ì´ ì·¨ì†Œ ë˜ì—ˆìŠµë‹ˆë‹¤.", room);
         }
     }
-    if (msg == "GÈ¸¿ø°¡ÀÔ") {
+    if (msg == "GíšŒì›ê°€ì…") {
         var day = new Date();
         var year = day.getFullYear();
         var month = day.getMonth() + 1;
@@ -503,16 +503,16 @@ function GameToolRegister(room, msg, player, isGroupChat, replier, ImageDB, pack
         var hour = day.getHours();
         var second = day.getSeconds();
 
-        var time = year + "³â " + month + "¿ù " + inday + "ÀÏ " + hour + "½Ã " + min + "ºĞ " + second + "ÃÊ";
+        var time = year + "ë…„ " + month + "ì›” " + inday + "ì¼ " + hour + "ì‹œ " + min + "ë¶„ " + second + "ì´ˆ";
         /*try{
         	var Playerdata = data(player);
         	var d = Playerdata["LEVEL"];
-        	rm("ÀÌ¹Ì È¸¿ø°¡ÀÔ Çß½À´Ï´Ù. ["+d+"]", room);
+        	rm("ì´ë¯¸ íšŒì›ê°€ì… í–ˆìŠµë‹ˆë‹¤. ["+d+"]", room);
         	return;
         } catch(e) {*/
         var Rule = FileStream.read(RPG_SETTING + "Rule.json");
-        rm(Config["Prefix"] + " - Register" + "\n[ ±ÔÄ¢ ]" + blank + "\n" + Rule.join("\n\n"), room);
-        rm("µ¿ÀÇ ÇÔ : Y | µ¿ÀÇ ÇÏÁö ¾ÊÀ½ : N\nµ¿ÀÇ ºÒ°¡½Ã °ÔÀÓ ÇÃ·¹ÀÌ°¡ ºÒ°¡ ÇÕ´Ï´Ù.", room);
+        rm(Config["Prefix"] + " - Register" + "\n[ ê·œì¹™ ]" + blank + "\n" + Rule.join("\n\n"), room);
+        rm("ë™ì˜ í•¨ : Y | ë™ì˜ í•˜ì§€ ì•ŠìŒ : N\në™ì˜ ë¶ˆê°€ì‹œ ê²Œì„ í”Œë ˆì´ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤.", room);
         c[player] = true;
     }
 }
@@ -531,69 +531,69 @@ function lang(msg) {
 
 function EvalO(sender, room, msg, replier) {
     try {
-        if (msg.indexOf("G½ÇÇà") == 0 && sender == "LEAD") {
-            rm("\nResult/Reply : " + eval(msg.replace("G½ÇÇà", "")), room);
+        if (msg.indexOf("Gì‹¤í–‰") == 0 && sender == "LEAD") {
+            rm("\nResult/Reply : " + eval(msg.replace("Gì‹¤í–‰", "")), room);
         }
     } catch (e) {
-        var ev = msg.replace("G½ÇÇà", "");
+        var ev = msg.replace("Gì‹¤í–‰", "");
         var code = [];
         for (var i = 0; i <= ev.split("\n").length; i++) {
             code.push("| " + i + " | " + ev.split("\n")[i] + "\n" + "=-".repeat(10));
         }
 
-        rm("\n[ Eval(ERROR) ]\n³»¿ë : " + e + "\n¶óÀÎ : " + e.lineNumber + "ÁÙ" + blank + "\n(B) º¿ ¿À·ù°¡ ¾Æ´Ñ ¸¶½ºÅÍÀÇ ÄÚµå ½ÇÇàÀ¸·Î ³­ ¿À·ù ÀÔ´Ï´Ù.\¡¤ ÄÚµå\n" + code.join("\n"), room);
+        rm("\n[ Eval(ERROR) ]\në‚´ìš© : " + e + "\në¼ì¸ : " + e.lineNumber + "ì¤„" + blank + "\n(B) ë´‡ ì˜¤ë¥˜ê°€ ì•„ë‹Œ ë§ˆìŠ¤í„°ì˜ ì½”ë“œ ì‹¤í–‰ìœ¼ë¡œ ë‚œ ì˜¤ë¥˜ ì…ë‹ˆë‹¤.\Â· ì½”ë“œ\n" + code.join("\n"), room);
     }
 }
 
 function Hair(player, type, room) {
-    var symble_hair = "¡á";
-    var symble_hair2 = "¡à";
+    var symble_hair = "â– ";
+    var symble_hair2 = "â–¡";
     var hair = [];
-    var symble = ["?", "?", "?", "?", "?", "?", "?", "?"];
+    var symble = ["â–", "â–", "â–", "â–Œ", "â–‹", "â–Š", "â–‰", "â–ˆ"];
 
-    // Çì¾î ½ºÅ¸ÀÏ [ ³²¼º ]
+    // í—¤ì–´ ìŠ¤íƒ€ì¼ [ ë‚¨ì„± ]
 
-    // : ÀÏ¹İ :
-    if (type == "ÀÏ¹İ") {
+    // : ì¼ë°˜ :
+    if (type == "ì¼ë°˜") {
         hair.push(symble_hair.repeat(15));
         hair.push(symble_hair.repeat(15));
         hair.push(symble_hair.repeat(15));
         return "\n" + hair.join("\n");
     }
-    // : °¡¸£¸¶ :
-    if (type == "°¡¸£¸¶") {
+    // : ê°€ë¥´ë§ˆ :
+    if (type == "ê°€ë¥´ë§ˆ") {
         hair.push(symble_hair.repeat(15));
         hair.push(symble_hair.repeat(8) + symble_hair2.repeat(7));
         hair.push(symble_hair.repeat(7) + symble_hair2.repeat(8));
         hair.push(symble_hair.repeat(6) + symble_hair2.repeat(9));
         return "\n" + hair.join("\n");
     }
-    // : ¸ğÀÚ :
-    if (type == "¸ğÀÚ") {
-        hair.push("¤Ô¤Ô¤Ô¤Ô¤Ô¤Ô" + symble_hair.repeat(6) + "¤Ô¤Ô¤Ô¤Ô");
-        hair.push("¤Ô¤Ô¤Ô¤Ô¤Ô" + symble_hair2.repeat(8) + "¤Ô¤Ô¤Ô¤Ô");
-        hair.push("¤Ô¤Ô¤Ô¤Ô" + symble_hair2.repeat(10) + "¤Ô¤Ô¤Ô¤Ô");
-        hair.push("¤Ô¤Ô¤Ô" + symble_hair2.repeat(12) + "¤Ô¤Ô¤Ô");
-        hair.push("¤Ô¤Ô" + symble_hair2.repeat(14) + "¤Ô¤Ô");
-        hair.push("¤Ô" + symble_hair2.repeat(16) + "¤Ô");
+    // : ëª¨ì :
+    if (type == "ëª¨ì") {
+        hair.push("ã…¤ã…¤ã…¤ã…¤ã…¤ã…¤" + symble_hair.repeat(6) + "ã…¤ã…¤ã…¤ã…¤");
+        hair.push("ã…¤ã…¤ã…¤ã…¤ã…¤" + symble_hair2.repeat(8) + "ã…¤ã…¤ã…¤ã…¤");
+        hair.push("ã…¤ã…¤ã…¤ã…¤" + symble_hair2.repeat(10) + "ã…¤ã…¤ã…¤ã…¤");
+        hair.push("ã…¤ã…¤ã…¤" + symble_hair2.repeat(12) + "ã…¤ã…¤ã…¤");
+        hair.push("ã…¤ã…¤" + symble_hair2.repeat(14) + "ã…¤ã…¤");
+        hair.push("ã…¤" + symble_hair2.repeat(16) + "ã…¤");
         hair.push(symble_hair.repeat(18));
-        hair.push("¤Ô" + symble_hair.repeat(15));
-        hair.push("¤Ô" + symble_hair.repeat(15));
+        hair.push("ã…¤" + symble_hair.repeat(15));
+        hair.push("ã…¤" + symble_hair.repeat(15));
         return "\n" + hair.join("\n");
     }
 }
 
 function Head(player, type) {
-    var symble_hair = "¡à";
-    var symble_hair2 = "¡ß";
+    var symble_hair = "â–¡";
+    var symble_hair2 = "â—†";
     var head = [];
-    var symble = ["?", "?", "?", "?", "?", "?", "?", "?"];
-    if (type == "ÀÏ¹İ") {
+    var symble = ["â–", "â–", "â–", "â–Œ", "â–‹", "â–Š", "â–‰", "â–ˆ"];
+    if (type == "ì¼ë°˜") {
         head.push(symble_hair.repeat(15));
         head.push(symble_hair.repeat(3) + "```" + symble_hair.repeat(7) + "```" + symble_hair.repeat(3));
-        head.push(symble_hair.repeat(3) + "¡Ü" + symble_hair.repeat(7) + "¡Ü" + symble_hair.repeat(3));
+        head.push(symble_hair.repeat(3) + "â—" + symble_hair.repeat(7) + "â—" + symble_hair.repeat(3));
         head.push(symble_hair.repeat(15));
-        head.push(symble_hair.repeat(7) + "¡ã" + symble_hair.repeat(7));
+        head.push(symble_hair.repeat(7) + "â–²" + symble_hair.repeat(7));
         head.push(symble_hair.repeat(15));
         head.push(symble_hair.repeat(5) + "-------" + symble_hair.repeat(5));
         return "\n" + head.join("\n");
@@ -608,7 +608,7 @@ function select_battleMonster(player, mon, replier, room) {
     var level = md["level"]
     var p = data(player);
     var _hp = objectBar(p["HP"], p["MAX_HP"], BAR_5);
-    var title = "¥Ø\n";
+    var title = "Î©\n";
     var mon_battle = "LV." + level + " " + nick + " > " + "HP " + hp + "\n";
     var pla_battle = "LV." + p["LEVEL"] + " " + player + " > " + "HP " + _hp + "\n";
     var battle = title + mon_battle + pla_battle;
@@ -640,17 +640,17 @@ if (0 >= mhp[player] || 0 >= p["HP"]){
 }
 function bar2(ex,max,type){ 
 var exp=ex/max*100; 
-if(exp>100) return "100ÆÛ ÀÌ»óÀÔ´Ï´Ù."; 
+if(exp>100) return "100í¼ ì´ìƒì…ë‹ˆë‹¤."; 
 type=type?exp.toFixed(2)+"%":ex+"/"+max; 
 exp=Math.round(exp); 
-const rects = {0:"",1 : "?",2 : "?",3 : "?",4 : "?",5 : "?",6 : "?",7 : "?",8 : "?",9 : "?"} 
-return "?".repeat(exp/10)+rects[exp%10]+" ".repeat((100-exp)/10)+":"+type 
+const rects = {0:"",1 : "â–",2 : "â–",3 : "â–",4 : "â–Œ",5 : "â–‹",6 : "â–Š",7 : "â–‰",8 : "â–ˆ",9 : "â–ˆ"} 
+return "â–ˆ".repeat(exp/10)+rects[exp%10]+" ".repeat((100-exp)/10)+":"+type 
 }
 function battleMonster(player, room) {
     var monsters = [
-        "Åä³¢",
-        "´ç³ª±Í",
-        "µÅÁö"
+        "í† ë¼",
+        "ë‹¹ë‚˜ê·€",
+        "ë¼ì§€"
     ];
     var mathrand = Math.floor(Math.random() * monsters.length);
     var mon = monsters[mathrand];
@@ -661,7 +661,7 @@ function battleMonster(player, room) {
     var level = md["level"]
     var p = data(player);
     var _hp = objectBar(p["HP"], p["MAX_HP"], BAR_5);
-    var title = "¥Ø\n";
+    var title = "Î©\n";
     
     mob[player] = {
         "name": md["name"],
@@ -697,7 +697,7 @@ if (0 >= mhp[player] || 0 >= p["HP"]){
 function infoMonster(mob, replier) {
     var mon = mob[player]["name"];
     var md = JSON.parse(FileStream.read(MONSTER + mon + ".json"));
-    var battle = "[ ¸ó½ºÅÍ µµ°¨ ]\nÀÌ¸§ : " + mon + "\nÃ¼·Â : " + md["hp"] + "\nµå·ÓÇÏ´Â ¾ÆÀÌÅÛ : \n|" + md["drops"].join("\n| ") + "\nµå·ÓÇÏ´Â °æÇèÄ¡ : " + md["exp"];
+    var battle = "[ ëª¬ìŠ¤í„° ë„ê° ]\nì´ë¦„ : " + mon + "\nì²´ë ¥ : " + md["hp"] + "\në“œë¡­í•˜ëŠ” ì•„ì´í…œ : \n|" + md["drops"].join("\n| ") + "\në“œë¡­í•˜ëŠ” ê²½í—˜ì¹˜ : " + md["exp"];
     replier.reply(battle);
 }
 
@@ -710,7 +710,7 @@ function displayBattle(player) {
     var level = md["level"]
     var p = data(player);
     var _hp = objectBar(p["HP"], p["MAX_HP"], BAR_5);
-    var title = " ".repeat(3) + "¥Ø" + " ".repeat(3) + "\n";
+    var title = " ".repeat(3) + "Î©" + " ".repeat(3) + "\n";
     var mon_battle = "LV." + level + " " + setHealthBar(mhp[player],md["maxhp"],nick,true) + "\n";
     var pla_battle = "LV." + p["LEVEL"] + " " + setHealthBar(p["HP"],p["MAX_HP"],player,true) + "\n";
     var battle = title + mon_battle + pla_battle;
@@ -721,14 +721,14 @@ function monsterHurt(player, room) {
     var mon = mob[player];
     var d = mon["damage"];
     var game = data(player);
-    rm(mon["name"]+" ÀÌ(°¡) "+player+" ´ÔÀ» °ø°İ ÇÒ·ÁÇÕ´Ï´Ù!", room);
+    rm(mon["name"]+" ì´(ê°€) "+player+" ë‹˜ì„ ê³µê²© í• ë ¤í•©ë‹ˆë‹¤!", room);
     java.lang.Thread.sleep(1000 * 2);
     var damage = mon["damage"];
      var RegData = data(player);
      RegData["HP"] -= damage;
      var finalData = JSONClean(RegData);
      FileStream.write(RPG_USER + player + ".json", finalData);
-    rm(mon["name"]+" ÀÌ(°¡) "+player+" ´Ô¿¡°Ô "+damage+" µ¥¹ÌÁö¸¦ ÀÔÇû½À´Ï´Ù!", room);
+    rm(mon["name"]+" ì´(ê°€) "+player+" ë‹˜ì—ê²Œ "+damage+" ë°ë¯¸ì§€ë¥¼ ì…í˜”ìŠµë‹ˆë‹¤!", room);
     rm(displayBattle(player), room);
 }
 
@@ -755,9 +755,9 @@ function playerHurt(player) {
         FileStream.write(RPG_USER + player + ".json", finalData);
         addInventory(player, i);
         mhp[player] = mon["hp"];
-        return mon["name"] + " À»(¸¦) »ç³É ÇÏ¿´½À´Ï´Ù!\nº¸»ó : [" + res + "]\n+ "+mon["bronze"]+" ºê·ĞÁî\n+ "+mon["silver"]+" ½Ç¹ö\n+ "+mon["gold"]+" °ñµå";
+        return mon["name"] + " ì„(ë¥¼) ì‚¬ëƒ¥ í•˜ì˜€ìŠµë‹ˆë‹¤!\në³´ìƒ : [" + res + "]\n+ "+mon["bronze"]+" ë¸Œë¡ ì¦ˆ\n+ "+mon["silver"]+" ì‹¤ë²„\n+ "+mon["gold"]+" ê³¨ë“œ";
     }
-    return "³ªÀÇ °ø°İ!\n" + displayBattle(player) + "\n" + mhp[player];
+    return "ë‚˜ì˜ ê³µê²©!\n" + displayBattle(player) + "\n" + mhp[player];
 }
 
 function Heal(player){
@@ -767,19 +767,19 @@ function Heal(player){
 		RegData["HP"] = RegData["MAX_HP"];
 		 var finalData = JSONClean(RegData);
         FileStream.write(RPG_USER + player + ".json", finalData);
-		return "È¸º¹ ÇÏ¿´½À´Ï´Ù.";
+		return "íšŒë³µ í•˜ì˜€ìŠµë‹ˆë‹¤.";
 	}
 	if (50 >= g["SILVER"]){
-		return "È¸º¹ ÇÒ·Á¸é 50 ½Ç¹ö°¡ ÇÊ¿ä ÇÕ´Ï´Ù.";
+		return "íšŒë³µ í• ë ¤ë©´ 50 ì‹¤ë²„ê°€ í•„ìš” í•©ë‹ˆë‹¤.";
 	}
 }
 function skinView(player){
 	var game = data(player);
 	var sk = getSkinData(player);
 	var a = [
-    "¤Ô" + sk[game["Skin"]]["¸Ó¸®"].join("\n¤Ô¤Ô") +
-    "\n¤Ô" + sk[game["Skin"]]["¸öÅë"].join("\n¤Ô") +
-     "\n¤Ô¤Ô" + sk[game["Skin"]]["´Ù¸®"].join("\n¤Ô¤Ô")
+    "ã…¤" + sk[game["Skin"]]["ë¨¸ë¦¬"].join("\nã…¤ã…¤") +
+    "\nã…¤" + sk[game["Skin"]]["ëª¸í†µ"].join("\nã…¤") +
+     "\nã…¤ã…¤" + sk[game["Skin"]]["ë‹¤ë¦¬"].join("\nã…¤ã…¤")
      ];
      return a.join("");
 }
@@ -788,32 +788,32 @@ function GameToolInfo(player, room) {
         var Rdata = read(player);
         var game = data(player);
         rm(
-            "[" + player + "] ´ÔÀÇ Á¤º¸" +
-            "\n¡¤ ³» ID : " + Rdata["Id"] +
-            "\n¡¤ Ã¼·Â : " + game["HP"] + "/" + game["MAX_HP"] +
-            "\n¡¤ ·¹º§ : " + game["LEVEL"] +
-            "\n¡¤ Áö¿ª : " + game["PLACE"] +
-            "\n¡¤ °æÇèÄ¡ : " + game["EXP"] + "/" + game["MAX_EXP"] +
-            "\n¡¤ ¸¶³ª : " + game["MANA"] + "/" + game["MAX_MANA"] + blank +
-            "\n\n\n¡¤ ÀåÂø Á¤º¸" +
-            "\n¡¤ ¸Ó¸® : " + game["Head"] +
-            "\n¡¤ ¸öÅë : " + game["Chestplate"] +
-            "\n¡¤ ´Ù¸® : " + game["Leggings"] +
-            "\n¡¤ ¹ß : " + game["Boots"] +
-            "\n¡¤ ¸Ó¸® : " + game["Hand"] +
-            "\n=< ½ºÅ² ( º£Å¸ ) >=" +
-            "\nG½ºÅ²ºä - ÇöÀç ÀåÂøÇÑ ½ºÅ²À» º¾´Ï´Ù."+
-            "\n¡¤ ·é" +
-            "\nÃß°¡ ¿¹Á¤" +
+            "[" + player + "] ë‹˜ì˜ ì •ë³´" +
+            "\nÂ· ë‚´ ID : " + Rdata["Id"] +
+            "\nÂ· ì²´ë ¥ : " + game["HP"] + "/" + game["MAX_HP"] +
+            "\nÂ· ë ˆë²¨ : " + game["LEVEL"] +
+            "\nÂ· ì§€ì—­ : " + game["PLACE"] +
+            "\nÂ· ê²½í—˜ì¹˜ : " + game["EXP"] + "/" + game["MAX_EXP"] +
+            "\nÂ· ë§ˆë‚˜ : " + game["MANA"] + "/" + game["MAX_MANA"] + blank +
+            "\n\n\nÂ· ì¥ì°© ì •ë³´" +
+            "\nÂ· ë¨¸ë¦¬ : " + game["Head"] +
+            "\nÂ· ëª¸í†µ : " + game["Chestplate"] +
+            "\nÂ· ë‹¤ë¦¬ : " + game["Leggings"] +
+            "\nÂ· ë°œ : " + game["Boots"] +
+            "\nÂ· ë¨¸ë¦¬ : " + game["Hand"] +
+            "\n=< ìŠ¤í‚¨ ( ë² íƒ€ ) >=" +
+            "\nGìŠ¤í‚¨ë·° - í˜„ì¬ ì¥ì°©í•œ ìŠ¤í‚¨ì„ ë´…ë‹ˆë‹¤."+
+            "\nÂ· ë£¬" +
+            "\nì¶”ê°€ ì˜ˆì •" +
             "\n" +
-            "\n[ °ñµå : " + game["GOLD"] + " /  ½Ç¹ö : " + game["SILVER"] + " ]" +
-            "\n[ ¥Ø : " + game["GameTool"] + " / Å©¸®½ºÅ» : " + game["CRASTAL"] + " ]" +
-            "\n[ ´ÙÅ© Å©¸®½ºÅ» : " + game["DARK_CRASTAL"] + " / ¿öÅÍ Å©¸®½ºÅ» : " + game["WATER_CRASTAL"] + " ]" +
-            "\n[ ¿¡¸Ş¶öµå : " + game["EMERALD"] + " / ·çºñ : " + game["RUBI"] + " ]" +
-            "\n" + "\n[ ºê·ĞÁî : " + game["BRONZE"] + " ]", room);
+            "\n[ ê³¨ë“œ : " + game["GOLD"] + " /  ì‹¤ë²„ : " + game["SILVER"] + " ]" +
+            "\n[ Î© : " + game["GameTool"] + " / í¬ë¦¬ìŠ¤íƒˆ : " + game["CRASTAL"] + " ]" +
+            "\n[ ë‹¤í¬ í¬ë¦¬ìŠ¤íƒˆ : " + game["DARK_CRASTAL"] + " / ì›Œí„° í¬ë¦¬ìŠ¤íƒˆ : " + game["WATER_CRASTAL"] + " ]" +
+            "\n[ ì—ë©”ë„ë“œ : " + game["EMERALD"] + " / ë£¨ë¹„ : " + game["RUBI"] + " ]" +
+            "\n" + "\n[ ë¸Œë¡ ì¦ˆ : " + game["BRONZE"] + " ]", room);
         return;
     } catch (e) {
-        rm("·Î±×ÀÎ ÀÌ³ª È¸¿ø°¡ÀÔÀ» ÇØÁÖ¼¼¿ä+", room);
+        rm("ë¡œê·¸ì¸ ì´ë‚˜ íšŒì›ê°€ì…ì„ í•´ì£¼ì„¸ìš”+", room);
         return;
     }
 }
@@ -832,59 +832,59 @@ function playerQuest(player) {
 function infoQuest(player) {
     Qdata = getQuest(data(player)["NOW_QUEST"]);
     info = [];
-    if (Qdata["type"] == "Ä¿¸Çµå") {
-        info.push("¡¤ Ãß°¡ ¿¹Á¤");
+    if (Qdata["type"] == "ì»¤ë§¨ë“œ") {
+        info.push("Â· ì¶”ê°€ ì˜ˆì •");
     }
-    if (Qdata["type"] == "»ç³É") {
+    if (Qdata["type"] == "ì‚¬ëƒ¥") {
         nbt = Qdata["monster"];
-        info.push("¡¤ Äù½ºÆ® ¸ó½ºÅÍ : " + nbt["name"]);
-        info.push("¡¤ Äù½ºÆ® ¸ó½ºÅÍ »ç³É È½¼ö : " + nbt["count"] + "¹ø");
+        info.push("Â· í€˜ìŠ¤íŠ¸ ëª¬ìŠ¤í„° : " + nbt["name"]);
+        info.push("Â· í€˜ìŠ¤íŠ¸ ëª¬ìŠ¤í„° ì‚¬ëƒ¥ íšŸìˆ˜ : " + nbt["count"] + "ë²ˆ");
     }
     message = [
-        "[" + Qdata["Name"] + "] Äù½ºÆ®¸¦ ÁøÇà ÇÕ´Ï´Ù+" + blank +
-        "\n¡¤ Äù½ºÆ® ¼³¸í : " + Qdata["description"] +
-        "\n¡¤ Äù½ºÆ® Å¸ÀÔ : " + Qdata["type"] +
-        "\n¡¤ Äù½ºÆ® º¸»ó : " + ITEM[Qdata["Reward"]["Item"]]["name"] + " (" + Qdata["Reward"]["Item"]["Count"] + "x)" +
-        "\n¡¤ Äù½ºÆ® Á¤º¸ > \n" + info
+        "[" + Qdata["Name"] + "] í€˜ìŠ¤íŠ¸ë¥¼ ì§„í–‰ í•©ë‹ˆë‹¤+" + blank +
+        "\nÂ· í€˜ìŠ¤íŠ¸ ì„¤ëª… : " + Qdata["description"] +
+        "\nÂ· í€˜ìŠ¤íŠ¸ íƒ€ì… : " + Qdata["type"] +
+        "\nÂ· í€˜ìŠ¤íŠ¸ ë³´ìƒ : " + ITEM[Qdata["Reward"]["Item"]]["name"] + " (" + Qdata["Reward"]["Item"]["Count"] + "x)" +
+        "\nÂ· í€˜ìŠ¤íŠ¸ ì •ë³´ > \n" + info
     ];
     return message;
 }
 
 function priceConverter(price, type, ctype) {
-    if (ctype == "ºê·ĞÁî") {
-        if (type == "ºê·ĞÁî") {
+    if (ctype == "ë¸Œë¡ ì¦ˆ") {
+        if (type == "ë¸Œë¡ ì¦ˆ") {
             p = 0;
             return Number(price * p) + " " + ctype;
         }
-        if (type == "½Ç¹ö") {
+        if (type == "ì‹¤ë²„") {
             p = 2;
             return Number(price * p) + " " + ctype;
         }
-        if (type == "°ñµå") {
+        if (type == "ê³¨ë“œ") {
             p = 4;
             return Number(price * p) + " " + ctype;
         }
-        if (type == "·çºñ") {
+        if (type == "ë£¨ë¹„") {
             p = 7;
             return Number(price * p) + " " + ctype;
         }
-        if (type == "¿¡¸Ş¶öµå") {
+        if (type == "ì—ë©”ë„ë“œ") {
             p = 8;
             return Number(price * p) + " " + ctype;
         }
-        if (type == "ÀÚ¼öÁ¤") {
+        if (type == "ììˆ˜ì •") {
             p = 12;
             return Number(price * p) + " " + ctype;
         }
-        if (type == "Å©¸®½ºÅ»") {
+        if (type == "í¬ë¦¬ìŠ¤íƒˆ") {
             p = 15;
             return Number(price * p) + " " + ctype;
         }
-        if (type == "´ÙÅ© Å©¸®½ºÅ»") {
+        if (type == "ë‹¤í¬ í¬ë¦¬ìŠ¤íƒˆ") {
             p = 21;
             return Number(price * p) + " " + ctype;
         }
-        if (type == "¿À¸Ş°¡") {
+        if (type == "ì˜¤ë©”ê°€") {
             p = 32;
             return Number(price * p) + " " + ctype;
         }
@@ -924,16 +924,16 @@ MapRPG.load = function(name) {
     return JSON.parse(FileStream.read(RPG_SETTING + "Maps/" + name + ".json"));
 }
 MapRPG.selectMob = function(player, mob, action, replier, room) {
-    if (action == "¹èÆ²") {
+    if (action == "ë°°í‹€") {
         select_battleMonster(player, mob, replier, room);
         return false;
     }
-    if (action == "Á¤º¸") {
+    if (action == "ì •ë³´") {
         infoMonster(mob, replier);
         return false;
     }
-    if (!(action.indexOf(["¹èÆ²", "Á¤º¸"]) != -1)) {
-        replier.reply("¾ø´Â ¸í·É ÀÔ´Ï´Ù. ¸í·É ¸®½ºÆ® : [ ¹èÆ² / Á¤º¸ ]");
+    if (!(action.indexOf(["ë°°í‹€", "ì •ë³´"]) != -1)) {
+        replier.reply("ì—†ëŠ” ëª…ë ¹ ì…ë‹ˆë‹¤. ëª…ë ¹ ë¦¬ìŠ¤íŠ¸ : [ ë°°í‹€ / ì •ë³´ ]");
         return false;
     }
 }
@@ -941,21 +941,21 @@ MapRPG.selectNPC = function(player, npc, action, replier) {
     var npc = MapRPG.load(data(player)["PLACE"])["npcs"][npc];
     var messageR = Math.floor(Math.random() * npc["message"].length);
     var message = npc["message"][messageR];
-    if (action == "¸»°É±â") {
+    if (action == "ë§ê±¸ê¸°") {
         replier.reply(npc["name"] + ": " + message);
         return;
-    } else if (action == "¼ö¸®") {
-        if (npc["type"] == "´ëÀåÀåÀÌ") {
-            replier.reply("¼ö¸®¸¦ ÇÏ°í ½ÍÁö¸¸ °³¹ßÁßÀÌ³×..");
+    } else if (action == "ìˆ˜ë¦¬") {
+        if (npc["type"] == "ëŒ€ì¥ì¥ì´") {
+            replier.reply("ìˆ˜ë¦¬ë¥¼ í•˜ê³  ì‹¶ì§€ë§Œ ê°œë°œì¤‘ì´ë„¤..");
             return;
         }
-        if (npc["type"] !== "´ëÀåÀåÀÌ") {
-            replier.reply("ÀÌ NPC´Â ¼ö¸® °ü·Ã NPC°¡ ¾Æ´Õ´Ï´Ù.");
+        if (npc["type"] !== "ëŒ€ì¥ì¥ì´") {
+            replier.reply("ì´ NPCëŠ” ìˆ˜ë¦¬ ê´€ë ¨ NPCê°€ ì•„ë‹™ë‹ˆë‹¤.");
             return;
         }
     }
-    if (!(action.indexOf(["¼ö¸®", "¸»°É±â"]) != -1)) {
-        replier.reply("Gnpc¼±ÅÃ [ÀÌ¸§] [¸»°É±â/¼ö¸®]");
+    if (!(action.indexOf(["ìˆ˜ë¦¬", "ë§ê±¸ê¸°"]) != -1)) {
+        replier.reply("Gnpcì„ íƒ [ì´ë¦„] [ë§ê±¸ê¸°/ìˆ˜ë¦¬]");
         return;
     }
 }
@@ -966,16 +966,16 @@ MapRPG.mapExist = function(name) {
 }
 MapRPG.info = function(name) {
     var mapData = MapRPG.load(name);
-    var goto = "¡¤ °¥¼ö ÀÖ´Â °÷ \n" + mapData["goto"].join("\n| ");
+    var goto = "Â· ê°ˆìˆ˜ ìˆëŠ” ê³³ \n" + mapData["goto"].join("\n| ");
     var npcPrefix = "\n\n[ NPC (" + Number(mapData["npcList"].length) + ") ]\n";
     var npc2 = [];
     for (var i = 0; i < mapData["npcList"].length; i++) {
         npc2.push("\n| [ ID : " + i + " ] [ " + mapData["npcs"][mapData["npcList"][i]]["type"] + " ] " + mapData["npcs"][mapData["npcList"][i]]["name"]);
     }
     var npc = npcPrefix + npc2.join("\n");
-    var monster = "\n\n[ ¸ó½ºÅÍ (" + mapData["Monster"].length + ") ]\n| " + mapData["Monster"].join("\n| ");
+    var monster = "\n\n[ ëª¬ìŠ¤í„° (" + mapData["Monster"].length + ") ]\n| " + mapData["Monster"].join("\n| ");
     var bgm = "\n\n[ BGM : " + mapData["bgm"] + " ]";
-    var drops = "\n¶³¾îÁø ¾ÆÀÌÅÛ (" + mapData["Drops"].length + ") : \n| " + mapData["Drops"].join("\n| ");
+    var drops = "\në–¨ì–´ì§„ ì•„ì´í…œ (" + mapData["Drops"].length + ") : \n| " + mapData["Drops"].join("\n| ");
     var form = "[ " + name + " ]\n" + goto + npc + monster + drops + bgm;
     return form;
 }
@@ -983,71 +983,71 @@ MapRPG.info = function(name) {
 MapRPG.createBiome = function(type) {
     var seed = Math.floor(Math.random() * 0x7FFFFFFFFFFFFFFFF);
     var percent = Math.floor(Math.random() * 100);
-    /* 0.15µµ */
+    /* 0.15ë„ */
     var snow_temp = 0.15;
     var snowBiome = [
-        "¾óÀ½ Æò¿ø",
-        "¾óÀ½ »ê",
-        "¾óÀ½ °­",
-        "Â÷°¡¿î ÇØº¯",
-        "Â÷°¡¿î Å¸ÀÌ°¡",
-        "Â÷°¡¿î Å¸ÀÌ°¡ °í¿ø",
-        "Â÷°¡¿î ¸Ş°¡ Å¸ÀÌ°¡"
+        "ì–¼ìŒ í‰ì›",
+        "ì–¼ìŒ ì‚°",
+        "ì–¼ìŒ ê°•",
+        "ì°¨ê°€ìš´ í•´ë³€",
+        "ì°¨ê°€ìš´ íƒ€ì´ê°€",
+        "ì°¨ê°€ìš´ íƒ€ì´ê°€ ê³ ì›",
+        "ì°¨ê°€ìš´ ë©”ê°€ íƒ€ì´ê°€"
     ];
-    /* 0.5µµ */
+    /* 0.5ë„ */
     var water_temp = 0.5;
     var waterBiome = [
-        "°­",
-        "¹Ù´Ù",
-        "±íÀº ¹Ù´Ù"
+        "ê°•",
+        "ë°”ë‹¤",
+        "ê¹Šì€ ë°”ë‹¤"
     ];
 
-    /* 0.6µµ */
+    /* 0.6ë„ */
     var birch_temp = 0.6;
     var birchBiome = [
-        "ÀÚÀÛ ³ª¹« ½£",
-        "ÀÚÀÛ ³ª¹« ½£ °í¿ø",
-        "¸Ş°¡ ÀÚÀÛ ³ª¹« ½£",
-        "¸Ş°¡ ÀÚÀÛ ³ª¹« ½£ °í¿ø"
+        "ìì‘ ë‚˜ë¬´ ìˆ²",
+        "ìì‘ ë‚˜ë¬´ ìˆ² ê³ ì›",
+        "ë©”ê°€ ìì‘ ë‚˜ë¬´ ìˆ²",
+        "ë©”ê°€ ìì‘ ë‚˜ë¬´ ìˆ² ê³ ì›"
     ];
 
     /* 0.7 ~ 1.5*/
     var normal_temp = 0.7;
     var normalBiome = [
-        "µéÆÇ",
-        "°í¿ø",
-        "²É µéÆÇ",
-        "ÇØº¯"
+        "ë“¤íŒ",
+        "ê³ ì›",
+        "ê½ƒ ë“¤íŒ",
+        "í•´ë³€"
     ];
     var desert_temp = 1.5;
     var desertBiome = [
-        "¸ğ·¡ »çÀå",
-        "»ç¸·",
-        "¸Ş»ç"
+        "ëª¨ë˜ ì‚¬ì¥",
+        "ì‚¬ë§‰",
+        "ë©”ì‚¬"
     ];
 
     var Biomes = [
-        "Àıº®",
-        "»ê",
-        "È£¼ö",
-        "ÇØº¯",
-        "Å¸ÀÌ°¡",
-        "Å¸ÀÌ°¡ °í¿ø",
-        "¸Ş°¡ Å¸ÀÌ°¡",
-        "°­",
-        "¹Ù´Ù",
-        "±íÀº ¹Ù´Ù",
-        "ÀÚÀÛ ³ª¹« ½£",
-        "ÀÚÀÛ ³ª¹« ½£ °í¿ø",
-        "¸Ş°¡ ÀÚÀÛ ³ª¹« ½£",
-        "¸Ş°¡ ÀÚÀÛ ³ª¹« ½£ °í¿ø",
-        "µéÆÇ",
-        "°í¿ø",
-        "²É µéÆÇ",
-        "ÇØº¯",
-        "¸ğ·¡ »çÀå",
-        "»ç¸·",
-        "¸Ş»ç"
+        "ì ˆë²½",
+        "ì‚°",
+        "í˜¸ìˆ˜",
+        "í•´ë³€",
+        "íƒ€ì´ê°€",
+        "íƒ€ì´ê°€ ê³ ì›",
+        "ë©”ê°€ íƒ€ì´ê°€",
+        "ê°•",
+        "ë°”ë‹¤",
+        "ê¹Šì€ ë°”ë‹¤",
+        "ìì‘ ë‚˜ë¬´ ìˆ²",
+        "ìì‘ ë‚˜ë¬´ ìˆ² ê³ ì›",
+        "ë©”ê°€ ìì‘ ë‚˜ë¬´ ìˆ²",
+        "ë©”ê°€ ìì‘ ë‚˜ë¬´ ìˆ² ê³ ì›",
+        "ë“¤íŒ",
+        "ê³ ì›",
+        "ê½ƒ ë“¤íŒ",
+        "í•´ë³€",
+        "ëª¨ë˜ ì‚¬ì¥",
+        "ì‚¬ë§‰",
+        "ë©”ì‚¬"
     ];
 
     /* Biomes.push(snowBiome);
@@ -1056,7 +1056,7 @@ MapRPG.createBiome = function(type) {
     Biomes.push(normalBiome);
     Biomes.push(desertBiome); */
 
-    if (type == "·£´ı") {
+    if (type == "ëœë¤") {
         var BiomeLength = Biomes.length;
         var BiomeRand = Math.floor(Math.random() * BiomeLength);
         var info = [{
@@ -1107,7 +1107,7 @@ MapRPG.loadBiome = function(seed) {
 
 function randombyte(length) {
     var result = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789¤¡¤¤¤§¤©¤±¤²¤µG¤¸¤º¤»¤±¤½¤¾¤¿¤À¤Á¤Â¤Ã¤Ä¤Å¤Æ¤Ç¤È¤É¤Ê¤Ë¤Ì¤Í¤Î¤Ï¤Ğ¤Ñ¤Ò¤Ó¡Ú¢¾¢½%&¡¿¡À=<>@#~^*+-_()!:;?¡Ù¢»¡ß¢Ï¢Ğ¢Ü¥á¨Ï{}$£Ü¡İ¡Ø¡î¥ğ¡æ¡ç[]`|¡Æ¡¤';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ã„±ã„´ã„·ã„¹ã…ã…‚ã……Gã…ˆã…Šã…‹ã…ã…ã…ã…ã…ã…‘ã…’ã…“ã…”ã…•ã…–ã…—ã…˜ã…™ã…šã…›ã…œã…ã…ã…Ÿã… ã…¡ã…¢ã…£â˜…â™¥â™¡%&Ã—Ã·=<>@#~^*+-_()!:;?â˜†â™¤â—†â˜â˜œâ™ªÎ±â“’{}$ï¿¦â—â€»âˆšÏ€â†’â†[]`|Â°Â·';
     var charactersLength = characters.length;
     for (var i = 0; i < length; i++) {
         result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -1116,7 +1116,7 @@ function randombyte(length) {
 }
 
 function stopQuest(player, quest, room) {
-    rm("Ãß°¡ ¿¹Á¤", room);
+    rm("ì¶”ê°€ ì˜ˆì •", room);
 }
 
 function Nogada(player, room) {
@@ -1125,11 +1125,11 @@ function Nogada(player, room) {
     RegData["BRONZE"] += money;
     var finalData = JSONClean(RegData);
     FileStream.write(RPG_USER + player + ".json", finalData);
-    rm("³ë°¡´Ù·Î " + money + " ºê·ĞÁî¸¦ ¾ò¾ú½À´Ï´Ù.", room);
+    rm("ë…¸ê°€ë‹¤ë¡œ " + money + " ë¸Œë¡ ì¦ˆë¥¼ ì–»ì—ˆìŠµë‹ˆë‹¤.", room);
 }
 
 function Nodong(player, room) {
-	if (player == "ÃÊ·ÕÀÌ"){
+	if (player == "ì´ˆë¡±ì´"){
 		return;
 	}
     money = Math.floor(Math.random() * 10);
@@ -1137,21 +1137,21 @@ function Nodong(player, room) {
     RegData["SILVER"] += money;
     var finalData = JSONClean(RegData);
     FileStream.write(RPG_USER + player + ".json", finalData);
-    rm("ÀÏÀ» ÇÏ¿© " + money + " ½Ç¹ö¸¦ ¾ò¾ú½À´Ï´Ù.", room);
+    rm("ì¼ì„ í•˜ì—¬ " + money + " ì‹¤ë²„ë¥¼ ì–»ì—ˆìŠµë‹ˆë‹¤.", room);
 }
 
 function LevelUp(player, room) {
     var regData = data(player);
-    var ÇÊ¿äÇÑ_EXP = regData["LEVEL"] * 75;
-    if (ÇÊ¿äÇÑ_EXP >= regData["EXP"]) {
-        rm("\n| ¾Ë¸² |\n¡¤ ´ç½ÅÀÇ EXP°¡ ºÎÁ·ÇÕ´Ï´Ù.\nÇÊ¿äÇÑ EXP : " + Number(ÇÊ¿äÇÑ_EXP - regData["EXP"]), room);
+    var í•„ìš”í•œ_EXP = regData["LEVEL"] * 75;
+    if (í•„ìš”í•œ_EXP >= regData["EXP"]) {
+        rm("\n| ì•Œë¦¼ |\nÂ· ë‹¹ì‹ ì˜ EXPê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.\ní•„ìš”í•œ EXP : " + Number(í•„ìš”í•œ_EXP - regData["EXP"]), room);
     }
-    if (regData["EXP"] >= ÇÊ¿äÇÑ_EXP) {
+    if (regData["EXP"] >= í•„ìš”í•œ_EXP) {
         var backLevel = regData["LEVEL"];
-        if (regData["EXP"] >= ÇÊ¿äÇÑ_EXP){
+        if (regData["EXP"] >= í•„ìš”í•œ_EXP){
         var sData = data(player);
         sData["LEVEL"] += 1;
-        sData["EXP"] -= ÇÊ¿äÇÑ_EXP;
+        sData["EXP"] -= í•„ìš”í•œ_EXP;
         sData["MAX_EXP"] = regData["LEVEL"] + 1 * 75;
         sData["MAX_HP"] += 5;
         sData["MAX_MANA"] += 5;
@@ -1159,7 +1159,7 @@ function LevelUp(player, room) {
         sData["ATK"] += 2;
         var finalData = JSONClean(sData);
         FileStream.write(RPG_USER + player + ".json", finalData);
-        rm("\n| ¾Ë¸² |\n¡¤ " + backLevel + " -> " + sData["LEVEL"], room);
+        rm("\n| ì•Œë¦¼ |\nÂ· " + backLevel + " -> " + sData["LEVEL"], room);
         }
     }
 }
@@ -1167,34 +1167,34 @@ function LevelUp(player, room) {
 function startQuest(player, quest, room) {
     Qdata = getQuest(quest);
     info = [];
-    if (Qdata["type"] == "Ä¿¸Çµå") {
-        info.push("¡¤ Ãß°¡ ¿¹Á¤");
+    if (Qdata["type"] == "ì»¤ë§¨ë“œ") {
+        info.push("Â· ì¶”ê°€ ì˜ˆì •");
     }
-    if (Qdata["type"] == "»ç³É") {
+    if (Qdata["type"] == "ì‚¬ëƒ¥") {
         nbt = Qdata["monster"];
-        info.push("¡¤ Äù½ºÆ® ¸ó½ºÅÍ : " + nbt["name"]);
-        info.push("¡¤ Äù½ºÆ® ¸ó½ºÅÍ »ç³É È½¼ö : " + nbt["count"] + "¹ø");
+        info.push("Â· í€˜ìŠ¤íŠ¸ ëª¬ìŠ¤í„° : " + nbt["name"]);
+        info.push("Â· í€˜ìŠ¤íŠ¸ ëª¬ìŠ¤í„° ì‚¬ëƒ¥ íšŸìˆ˜ : " + nbt["count"] + "ë²ˆ");
     }
     user(player, "NOW_QUEST", quest);
-    rm("[" + Qdata["Name"] + "] Äù½ºÆ®¸¦ ÁøÇà ÇÕ´Ï´Ù+" + blank +
-        "\n¡¤ Äù½ºÆ® ¼³¸í : " + Qdata["description"] +
-        "\n¡¤ Äù½ºÆ® Å¸ÀÔ : " + Qdata["type"] +
-        "\n¡¤ Äù½ºÆ® º¸»ó : " + ITEM[Qdata["Reward"]["Item"]]["name"] + " (" + Qdata["Reward"]["Item"]["Count"] + "x)" +
-        "\n¡¤ Äù½ºÆ® Á¤º¸ > \n" + info,
+    rm("[" + Qdata["Name"] + "] í€˜ìŠ¤íŠ¸ë¥¼ ì§„í–‰ í•©ë‹ˆë‹¤+" + blank +
+        "\nÂ· í€˜ìŠ¤íŠ¸ ì„¤ëª… : " + Qdata["description"] +
+        "\nÂ· í€˜ìŠ¤íŠ¸ íƒ€ì… : " + Qdata["type"] +
+        "\nÂ· í€˜ìŠ¤íŠ¸ ë³´ìƒ : " + ITEM[Qdata["Reward"]["Item"]]["name"] + " (" + Qdata["Reward"]["Item"]["Count"] + "x)" +
+        "\nÂ· í€˜ìŠ¤íŠ¸ ì •ë³´ > \n" + info,
         room);
 }
 /*
 {
    "Monster_example":{
-      "Name": "¿¹Á¦_¸ó½ºÅÍ",
+      "Name": "ì˜ˆì œ_ëª¬ìŠ¤í„°",
       "description": "Description.",
-      "type": "»ç³É",
+      "type": "ì‚¬ëƒ¥",
       "monster": [
-         "name": "°³¹Ì",
+         "name": "ê°œë¯¸",
          "count": 10,
       ],
       "Reward": [
-         "Item":"³ª¹« Á¶°¢",
+         "Item":"ë‚˜ë¬´ ì¡°ê°",
          "Count": 3
       ]
    }   
@@ -1210,129 +1210,129 @@ function Enchant(player, item, ench, enchLvl) {
         IDATA[item]["ench"] = [];
         IDATA[item]["ench"].push(ench + ":" + enchLvl);
         FileStream.write(RPG_USER + "INVENTORY/data/" + player + ".json", JSONClean(IDATA));
-        return "\n- - - - - - - - - - -\n| ÀÎ Ã¦ Æ® |\n¡¤ " + ITEM[item]["name"] + "+ ÀÎÃ¦Æ® - " + ench + "\n- - - - - - - - - - -";
+        return "\n- - - - - - - - - - -\n| ì¸ ì±ˆ íŠ¸ |\nÂ· " + ITEM[item]["name"] + "+ ì¸ì±ˆíŠ¸ - " + ench + "\n- - - - - - - - - - -";
     }
     if (IDATA[item]["ench"] !== undefined) {
         IDATA[item]["ench"].push(ench + ":" + enchLvl);
         FileStream.write(RPG_USER + "INVENTORY/data/" + player + ".json", JSONClean(IDATA));
-        return "\n- - - - - - - - - - -\n| ÀÎ Ã¦ Æ® |\n¡¤ " + ITEM[item]["name"] + "+ ÀÎÃ¦Æ® - " + ench + "\n- - - - - - - - - - -";
+        return "\n- - - - - - - - - - -\n| ì¸ ì±ˆ íŠ¸ |\nÂ· " + ITEM[item]["name"] + "+ ì¸ì±ˆíŠ¸ - " + ench + "\n- - - - - - - - - - -";
     }
-    return "\n- - - - - - - - - - -\n| ÀÎ Ã¦ Æ® |\n¡¤ " + ITEM[item]["name"] + "+ ÀÎÃ¦Æ® - " + ench + "\n- - - - - - - - - - -";
+    return "\n- - - - - - - - - - -\n| ì¸ ì±ˆ íŠ¸ |\nÂ· " + ITEM[item]["name"] + "+ ì¸ì±ˆíŠ¸ - " + ench + "\n- - - - - - - - - - -";
 }
 function Skin(room, msg, sender, isGroupChat, replier, ImageDB, packageName, threadId) {
 	if (skinCreate[sender] !== undefined){
-		if (msg.length > 15 && skinType[sender] == "¸Ó¸®"){
-			replier.reply("ÃÖ´ë 15Ä­±îÁö¸¸ °¡´ÉÇÕ´Ï´Ù.");
+		if (msg.length > 15 && skinType[sender] == "ë¨¸ë¦¬"){
+			replier.reply("ìµœëŒ€ 15ì¹¸ê¹Œì§€ë§Œ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 			return;
 		}
-		if (msg.length > 17 && skinType[sender] == "´Ù¸®"){
-			replier.reply("ÃÖ´ë 17Ä­±îÁö¸¸ °¡´ÉÇÕ´Ï´Ù.");
+		if (msg.length > 17 && skinType[sender] == "ë‹¤ë¦¬"){
+			replier.reply("ìµœëŒ€ 17ì¹¸ê¹Œì§€ë§Œ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 			return;
 		}
-		if (msg.length > 32 && skinType[sender] == "¸öÅë"){
-			replier.reply("ÃÖ´ë 32Ä­±îÁö¸¸ °¡´ÉÇÕ´Ï´Ù.");
+		if (msg.length > 32 && skinType[sender] == "ëª¸í†µ"){
+			replier.reply("ìµœëŒ€ 32ì¹¸ê¹Œì§€ë§Œ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 			return;
 		}
-		if(msg == "G´ÙÀ½"){
-			if (skinType[sender] == "¸Ó¸®"){
-			skinType[sender] = "¸öÅë";
-			replier.reply("´ÙÀ½ ºÎÀ§´Â ¸öÅë ÀÔ´Ï´Ù.");
+		if(msg == "Gë‹¤ìŒ"){
+			if (skinType[sender] == "ë¨¸ë¦¬"){
+			skinType[sender] = "ëª¸í†µ";
+			replier.reply("ë‹¤ìŒ ë¶€ìœ„ëŠ” ëª¸í†µ ì…ë‹ˆë‹¤.");
 			return;
 			}
-			if (skinType[sender] == "¸öÅë"){
-			skinType[sender] = "´Ù¸®";
-			replier.reply("´ÙÀ½ ºÎÀ§´Â ´Ù¸® ÀÔ´Ï´Ù.");
+			if (skinType[sender] == "ëª¸í†µ"){
+			skinType[sender] = "ë‹¤ë¦¬";
+			replier.reply("ë‹¤ìŒ ë¶€ìœ„ëŠ” ë‹¤ë¦¬ ì…ë‹ˆë‹¤.");
 			return;
 			}
-			if (skinType[sender] == "´Ù¸®"){
+			if (skinType[sender] == "ë‹¤ë¦¬"){
 	var RegData = JSON.parse(FileStream.read(RPG_USER + "SKINS/" + sender + ".json"));
-	var a = skin[sender]["ÀÌ¸§"];
+	var a = skin[sender]["ì´ë¦„"];
     RegData[a] = {};
-    RegData[a]["¸Ó¸®"] = skin[sender]["¸Ó¸®"];
-    RegData[a]["¸öÅë"] = skin[sender]["¸öÅë"];
-    RegData[a]["´Ù¸®"] = skin[sender]["´Ù¸®"];
+    RegData[a]["ë¨¸ë¦¬"] = skin[sender]["ë¨¸ë¦¬"];
+    RegData[a]["ëª¸í†µ"] = skin[sender]["ëª¸í†µ"];
+    RegData[a]["ë‹¤ë¦¬"] = skin[sender]["ë‹¤ë¦¬"];
     var finalData = JSONClean(RegData);
     FileStream.write(RPG_USER + "SKINS/" + sender + ".json", finalData);
 			skinCreate[sender] = undefined;
-			replier.reply("³¡ ÀÔ´Ï´Ù!");
-			replier.reply("¡¤ ¹Ì¸®º¸±â"+blank+"\n\n\n¡¤ ¸Ó¸®\n"+skin[sender]["¸Ó¸®"].join("\n")+"\n¡¤ ¸öÅë\n"+skin[sender]["¸öÅë"].join("\n")+"\n¡¤ ´Ù¸®\n"+skin[sender]["´Ù¸®"].join("\n"));
+			replier.reply("ë ì…ë‹ˆë‹¤!");
+			replier.reply("Â· ë¯¸ë¦¬ë³´ê¸°"+blank+"\n\n\nÂ· ë¨¸ë¦¬\n"+skin[sender]["ë¨¸ë¦¬"].join("\n")+"\nÂ· ëª¸í†µ\n"+skin[sender]["ëª¸í†µ"].join("\n")+"\nÂ· ë‹¤ë¦¬\n"+skin[sender]["ë‹¤ë¦¬"].join("\n"));
 			return;
 			}
 			
 		}
-		if (msg.indexOf("G½ºÅ²ºÎÀ§")==0){
+		if (msg.indexOf("GìŠ¤í‚¨ë¶€ìœ„")==0){
 		var args = msg.split(" ");
-		if (args[1].indexOf(["¸Ó¸®","¸öÅë","´Ù¸®"])== -1){
-			replier.reply("ºÎÀ§´Â ¸Ó¸®,¸öÅë,´Ù¸® ¹Û¿¡ ¾ø½À´Ï´Ù.");
+		if (args[1].indexOf(["ë¨¸ë¦¬","ëª¸í†µ","ë‹¤ë¦¬"])== -1){
+			replier.reply("ë¶€ìœ„ëŠ” ë¨¸ë¦¬,ëª¸í†µ,ë‹¤ë¦¬ ë°–ì— ì—†ìŠµë‹ˆë‹¤.");
 			return;
 		} else {
 			skinType[sender] = args[1];
 			return;
 		}
 	}
-	if (msg == "G½ºÅ²¹é"){
+	if (msg == "GìŠ¤í‚¨ë°±"){
 		skin[sender][skinType[sender]].pop();
-		replier.reply("½ºÅ²À» µÇµ¹·È½À´Ï´Ù.");
-		replier.reply("[ ½ºÅ² ÇöÈ² ]\nºÎÀ§ : "+skinType[sender]+"\n"+skin[sender][skinType[sender]].join("\n"));
+		replier.reply("ìŠ¤í‚¨ì„ ë˜ëŒë ¸ìŠµë‹ˆë‹¤.");
+		replier.reply("[ ìŠ¤í‚¨ í˜„í™© ]\në¶€ìœ„ : "+skinType[sender]+"\n"+skin[sender][skinType[sender]].join("\n"));
 		return;
 	}
 		skin[sender][skinType[sender]].push(msg);
-		replier.reply("[ ½ºÅ² ÇöÈ² ]\nºÎÀ§ : "+skinType[sender]+"\n"+skin[sender][skinType[sender]].join("\n"));
+		replier.reply("[ ìŠ¤í‚¨ í˜„í™© ]\në¶€ìœ„ : "+skinType[sender]+"\n"+skin[sender][skinType[sender]].join("\n"));
 	}
-	if (msg.indexOf("G½ºÅ²Á¦ÀÛ")==0){
+	if (msg.indexOf("GìŠ¤í‚¨ì œì‘")==0){
 	try {
 	var RegData = JSON.parse(FileStream.read(RPG_USER + "SKINS/" + sender + ".json"));
 	var a = msg.substr(6);
 	if (a == ""){
-		replier.reply("G½ºÅ²Á¦ÀÛ (½ºÅ² ÀÌ¸§)");
+		replier.reply("GìŠ¤í‚¨ì œì‘ (ìŠ¤í‚¨ ì´ë¦„)");
 		return;
 	}
     RegData[a] = {};
-    RegData[a]["¸Ó¸®"] = [];
-    RegData[a]["¸öÅë"] = [];
-    RegData[a]["´Ù¸®"] = [];
+    RegData[a]["ë¨¸ë¦¬"] = [];
+    RegData[a]["ëª¸í†µ"] = [];
+    RegData[a]["ë‹¤ë¦¬"] = [];
     var finalData = JSONClean(RegData);
     FileStream.write(RPG_USER + "SKINS/" + sender + ".json", finalData);
     skin[sender] = {};
-    skin[sender]["¸Ó¸®"] = [];
-    skin[sender]["¸öÅë"] = [];
-    skin[sender]["´Ù¸®"] = [];
-    skin[sender]["ÀÌ¸§"] = a;
+    skin[sender]["ë¨¸ë¦¬"] = [];
+    skin[sender]["ëª¸í†µ"] = [];
+    skin[sender]["ë‹¤ë¦¬"] = [];
+    skin[sender]["ì´ë¦„"] = a;
     
     skinCreate[sender] = true;
-    skinType[sender] = "¸Ó¸®";
-    replier.reply("½ºÅ² Á¦ÀÛÀ» ½ÃÀÛÇÕ´Ï´Ù.\nG´ÙÀ½ ¸¦ ÀÌ¿ëÇÏ¿© ¸¶À½°Í Á¦ÀÛÇØº¸¼¼¿ä!\nÃ¤ÆÃ ÀÔ·ÂÀ¸·Î ¸¸µé¼ö ÀÖ½À´Ï´Ù.\nÇÑ¹ø ÀÔ·ÂÀÌ ½ºÅ²ÀÇ ÇÑÁÙ ÀÔ´Ï´Ù.");
+    skinType[sender] = "ë¨¸ë¦¬";
+    replier.reply("ìŠ¤í‚¨ ì œì‘ì„ ì‹œì‘í•©ë‹ˆë‹¤.\nGë‹¤ìŒ ë¥¼ ì´ìš©í•˜ì—¬ ë§ˆìŒê²ƒ ì œì‘í•´ë³´ì„¸ìš”!\nì±„íŒ… ì…ë ¥ìœ¼ë¡œ ë§Œë“¤ìˆ˜ ìˆìŠµë‹ˆë‹¤.\ní•œë²ˆ ì…ë ¥ì´ ìŠ¤í‚¨ì˜ í•œì¤„ ì…ë‹ˆë‹¤.");
     return;
 	} catch (e) {
-		replier.reply("Ã³À½ ¸¸µå¼Å¼­ ´Ù½Ã ÀÔ·Â ÇÏ¼Å¾ßµË´Ï´Ù.");
+		replier.reply("ì²˜ìŒ ë§Œë“œì…”ì„œ ë‹¤ì‹œ ì…ë ¥ í•˜ì…”ì•¼ë©ë‹ˆë‹¤.");
 		FileStream.write(RPG_USER + "SKINS/" + sender + ".json", JSONClean({}));
 		return;
 		}
 	}
-	if (msg.indexOf("G½ºÅ²ÀåÂø")==0){
+	if (msg.indexOf("GìŠ¤í‚¨ì¥ì°©")==0){
 	var RegData = JSON.parse(FileStream.read(RPG_USER + "SKINS/" + sender + ".json"));
 	var a = msg.substr(6);
 	if (a == ""){
-		replier.reply("G½ºÅ²ÀåÂø (½ºÅ² ÀÌ¸§)");
+		replier.reply("GìŠ¤í‚¨ì¥ì°© (ìŠ¤í‚¨ ì´ë¦„)");
 		return;
 	}
 	if (RegData[a] == undefined){
-		replier.reply("¾ø´Â ½ºÅ² ÀÔ´Ï´Ù.");
+		replier.reply("ì—†ëŠ” ìŠ¤í‚¨ ì…ë‹ˆë‹¤.");
 		return;
 	}
 	var sData = data(sender);
 	sData["Skin"] = a;
 	var finalData = JSONClean(sData);
     FileStream.write(RPG_USER + sender + ".json", finalData);
-	replier.reply("ÀåÂøÀ» ¿Ï·á ÇÏ¿´½À´Ï´Ù.");
+	replier.reply("ì¥ì°©ì„ ì™„ë£Œ í•˜ì˜€ìŠµë‹ˆë‹¤.");
 	return;
 	}
-	if (msg == "G½ºÅ²ºä"){
+	if (msg == "GìŠ¤í‚¨ë·°"){
 		try {
-			replier.reply("¡¤ ½ºÅ² : "+data(sender)["Skin"]+"\n\n"+skinView(sender));
+			replier.reply("Â· ìŠ¤í‚¨ : "+data(sender)["Skin"]+"\n\n"+skinView(sender));
 			return;
 			} catch (e) {
-				replier.reply("´ç½ÅÀº ½ºÅ²ÀÌ ¾ø½À´Ï´Ù.\n"+e+"\n"+e.lineNumber+" Line");
+				replier.reply("ë‹¹ì‹ ì€ ìŠ¤í‚¨ì´ ì—†ìŠµë‹ˆë‹¤.\n"+e+"\n"+e.lineNumber+" Line");
 				return;
 			}
 		}
@@ -1345,149 +1345,149 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
      Skin(room, msg, sender, isGroupChat, replier, ImageDB, packageName, threadId);
     GameToolRegister(room, msg, sender, isGroupChat, replier, ImageDB, packageName, threadId);
     //PartyPro(room, msg, sender, isGroupChat, replier, ImageDB, packageName, threadId);
-    if (msg == "GÀÎº¥Åä¸®µ¥ÀÌÅÍ°íÄ¡±â") {
+    if (msg == "Gì¸ë²¤í† ë¦¬ë°ì´í„°ê³ ì¹˜ê¸°") {
         FileStream.write(RPG_USER + "INVENTORY/data/" + sender + ".json", JSONClean({}));
-        replier.reply("¾ÆÀÌÅÛ NBT µ¥ÀÌÅÍ°¡ Àû¿ëµÇµµ·Ï °íÃÄÁ³½À´Ï´Ù.");
+        replier.reply("ì•„ì´í…œ NBT ë°ì´í„°ê°€ ì ìš©ë˜ë„ë¡ ê³ ì³ì¡ŒìŠµë‹ˆë‹¤.");
     }
-    if (msg == "GÈú"){
+    if (msg == "Gí"){
     	replier.reply(Heal(sender));
     }
-    if (msg.indexOf("GÆÇ¸Å") == 0) {
+    if (msg.indexOf("GíŒë§¤") == 0) {
         var args = msg.split(" ");
         if (args[1] == undefined) {
-            replier.reply("GÆÇ¸Å (¾ÆÀÌÅÛ ÀÌ¸§)");
+            replier.reply("GíŒë§¤ (ì•„ì´í…œ ì´ë¦„)");
         }
         if (args[1] !== undefined) {
-            var a = msg.replace("GÆÇ¸Å ", "");
+            var a = msg.replace("GíŒë§¤ ", "");
             replier.reply(seeShop(sender, "sell", a));
         }
     }
-    if (msg.indexOf("G¹ö¸®±â") == 0) {
-        var args = msg.replace("G¹ö¸®±â ", "");
+    if (msg.indexOf("Gë²„ë¦¬ê¸°") == 0) {
+        var args = msg.replace("Gë²„ë¦¬ê¸° ", "");
         if (getInventory(sender).indexOf(args) == -1) {
-            replier.reply(args + " ¾ÆÀÌÅÛÀº ¾ø½À´Ï´Ù.");
+            replier.reply(args + " ì•„ì´í…œì€ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
         removeInventory(sender, args);
-        replier.reply(args + " ¾ÆÀÌÅÛÀ» ¹ö·È½À´Ï´Ù.");
+        replier.reply(args + " ì•„ì´í…œì„ ë²„ë ¸ìŠµë‹ˆë‹¤.");
     }
-    if (msg.indexOf("GÀåÂø") == 0) {
+    if (msg.indexOf("Gì¥ì°©") == 0) {
         var args = msg.split("::");
         var arg = msg.split(" ");
         if (args[1] == undefined || arg[1] == undefined) {
-            replier.reply("GÀåÂø::[¼Õ/¸Ó¸®/¸öÅë/´Ù¸®/¹ß] [ÀåÂøÇÒ ¾ÆÀÌÅÛ]");
+            replier.reply("Gì¥ì°©::[ì†/ë¨¸ë¦¬/ëª¸í†µ/ë‹¤ë¦¬/ë°œ] [ì¥ì°©í•  ì•„ì´í…œ]");
         }
         if (args[1] !== undefined && arg[1] !== undefined) {
-            var t = msg.replace("GÀåÂø::"+args[1]+" ", "");
+            var t = msg.replace("Gì¥ì°©::"+args[1]+" ", "");
             replier.reply(Equipment(sender, args[1], t));
         }
     }
-    if (msg.indexOf("G±¸¸Å") == 0) {
+    if (msg.indexOf("Gêµ¬ë§¤") == 0) {
         var args = msg.split(" ");
         if (args[1] == undefined) {
-            replier.reply("G±¸¸Å (¾ÆÀÌÅÛ ÀÌ¸§)");
+            replier.reply("Gêµ¬ë§¤ (ì•„ì´í…œ ì´ë¦„)");
         }
         if (args[1] !== undefined) {
-            var a = msg.replace("G±¸¸Å ", "");
+            var a = msg.replace("Gêµ¬ë§¤ ", "");
             replier.reply(seeShop(sender, "buy", a));
         }
     }
-    if (msg == "G»óÁ¡") {
-        replier.reply(seeShop(sender, "º¸±â", "null"));
+    if (msg == "Gìƒì ") {
+        replier.reply(seeShop(sender, "ë³´ê¸°", "null"));
     }
-    if (msg.indexOf("G»óÁ¡º¸±â") == 0) {
+    if (msg.indexOf("Gìƒì ë³´ê¸°") == 0) {
         var args = msg.split(" ");
         if (args[1] == undefined) {
-            replier.reply("G»óÁ¡º¸±â (¾ÆÀÌÅÛ ÀÌ¸§)");
+            replier.reply("Gìƒì ë³´ê¸° (ì•„ì´í…œ ì´ë¦„)");
         }
         if (args[1] !== undefined) {
-            var arg = msg.replace("G»óÁ¡º¸±â ", "");
-            replier.reply(seeShop(sender, "¾ÆÀÌÅÛº¸±â", arg));
+            var arg = msg.replace("Gìƒì ë³´ê¸° ", "");
+            replier.reply(seeShop(sender, "ì•„ì´í…œë³´ê¸°", arg));
         }
     }
-    if (msg.indexOf("G¾ÆÀÌÅÛº¸±â") == 0) {
-        var args = msg.replace("G¾ÆÀÌÅÛº¸±â ", "");
+    if (msg.indexOf("Gì•„ì´í…œë³´ê¸°") == 0) {
+        var args = msg.replace("Gì•„ì´í…œë³´ê¸° ", "");
         replier.reply(getItemInfo(args));
     }
-    if (msg.indexOf("G°è»ê") == 0) {
-        replier.reply("* °è»ê °á°ú\n" + calculator(msg.replace("G°è»ê ", "")));
+    if (msg.indexOf("Gê³„ì‚°") == 0) {
+        replier.reply("* ê³„ì‚° ê²°ê³¼\n" + calculator(msg.replace("Gê³„ì‚° ", "")));
     }
-    if (msg == "Gµµ¿ò¸»") {
-        replier.reply("[ µµ¿ò¸» ]" + blank + HELP);
+    if (msg == "Gë„ì›€ë§") {
+        replier.reply("[ ë„ì›€ë§ ]" + blank + HELP);
     }
-    if (msg == "GÈ¸¿ø°¡ÀÔ") {
+    if (msg == "GíšŒì›ê°€ì…") {
         GameToolRegister(sender, room, ImageDB);
     }
-    if (msg == "G³»Á¤º¸") {
+    if (msg == "Gë‚´ì •ë³´") {
         GameToolInfo(sender, room);
     }
-    if (msg == "GÀÎº¥Åä¸®") {
+    if (msg == "Gì¸ë²¤í† ë¦¬") {
         GameToolInventory(sender, room);
     }
-    if (msg == "G·¹º§¾÷") {
+    if (msg == "Gë ˆë²¨ì—…") {
         LevelUp(sender, room);
     }
-    if (msg == "GÄù½ºÆ®") {
+    if (msg == "Gí€˜ìŠ¤íŠ¸") {
         args = msg.split(" ");
 
         questHelp = [
-            "¡¤ GÄù½ºÆ® Á¤º¸ - Äù½ºÆ® Á¤º¸¸¦ È®ÀÎ ÇÕ´Ï´Ù.",
-            "¡¤ GÄù½ºÆ® Æ÷±â - Äù½ºÆ®¸¦ Æ÷±â ÇÕ´Ï´Ù."
+            "Â· Gí€˜ìŠ¤íŠ¸ ì •ë³´ - í€˜ìŠ¤íŠ¸ ì •ë³´ë¥¼ í™•ì¸ í•©ë‹ˆë‹¤.",
+            "Â· Gí€˜ìŠ¤íŠ¸ í¬ê¸° - í€˜ìŠ¤íŠ¸ë¥¼ í¬ê¸° í•©ë‹ˆë‹¤."
         ];
 
         rm(questHelp.join("\n"), room);
     }
-    if (msg == "G³ë°¡´Ù") {
+    if (msg == "Gë…¸ê°€ë‹¤") {
         Nogada(sender, room);
     }
-    if (msg == "GÀÏ") {
+    if (msg == "Gì¼") {
         Nodong(sender, room);
     }
-    if (msg == "G»ç³É") {
+    if (msg == "Gì‚¬ëƒ¥") {
         battleMonster(sender, room);
     }
-    if (msg == "G°ø°İ") {
+    if (msg == "Gê³µê²©") {
         replier.reply(playerHurt(sender));
     }
-    if (msg == "G»ç³É»óÈ²") {
+    if (msg == "Gì‚¬ëƒ¥ìƒí™©") {
         replier.reply(displayBattle(sender));
     }
-    if (msg.indexOf("G¸ÊÁ¤º¸") == 0) {
+    if (msg.indexOf("Gë§µì •ë³´") == 0) {
         var args = msg.substr(5);
         try {
             replier.reply(MapRPG.info(args));
         } catch (e) {
-            rm(args + " Áö¿ªÀº ¾ø½À´Ï´Ù.", room);
+            rm(args + " ì§€ì—­ì€ ì—†ìŠµë‹ˆë‹¤.", room);
         }
     }
-    if (msg.indexOf("G¸÷¼±ÅÃ") == 0) {
+    if (msg.indexOf("Gëª¹ì„ íƒ") == 0) {
         var args = msg.split(" ");
         if (MapRPG.load(data(sender)["PLACE"])["Monster"].indexOf(args[1]) != -1) {
             MapRPG.selectMob(sender, args[1], args[2], replier);
         }
         if (!(MapRPG.load(data(sender)["PLACE"])["Monster"].indexOf(args[1]) != -1)) {
-            replier.reply(args[1] + " ´Â(Àº) ¾ø´Â ¸ó½ºÅÍ ÀÔ´Ï´Ù.");
+            replier.reply(args[1] + " ëŠ”(ì€) ì—†ëŠ” ëª¬ìŠ¤í„° ì…ë‹ˆë‹¤.");
         }
     }
-    if (msg.indexOf("G¿£ÇÇ½Ã¼±ÅÃ") == 0) {
+    if (msg.indexOf("Gì—”í”¼ì‹œì„ íƒ") == 0) {
         var args = msg.split(" ");
         if (MapRPG.load(data(sender)["PLACE"])["npcList"].indexOf(args[1]) != -1) {
             MapRPG.selectNPC(sender, args[1], args[2], replier);
         }
         if (!(MapRPG.load(data(sender)["PLACE"])["npcList"].indexOf(args[1]) != -1)) {
-            replier.reply(args[1] + " ´Â(Àº) ¾ø´Â NPC ÀÔ´Ï´Ù.");
+            replier.reply(args[1] + " ëŠ”(ì€) ì—†ëŠ” NPC ì…ë‹ˆë‹¤.");
         }
     }
-    if (msg.indexOf("GÀÌµ¿") == 0) {
+    if (msg.indexOf("Gì´ë™") == 0) {
         var args = msg.substr(4);
         try {
             if (MapRPG.load(data(sender)["PLACE"])["goto"].indexOf(args) == -1) {
-                rm("ÇØ´ç Áö¿ª¿¡´Â °¥¼ö ¾ø½À´Ï´Ù.", room);
+                rm("í•´ë‹¹ ì§€ì—­ì—ëŠ” ê°ˆìˆ˜ ì—†ìŠµë‹ˆë‹¤.", room);
             }
             if (MapRPG.load(data(sender)["PLACE"])["goto"].indexOf(args) != -1) {
-                rm(args + " Áö¿ªÀ¸·Î ÀÌµ¿ÇÕ´Ï´Ù!...", room);
+                rm(args + " ì§€ì—­ìœ¼ë¡œ ì´ë™í•©ë‹ˆë‹¤!...", room);
                 java.lang.Thread.sleep(1000 * 3);
-                rm("@" + sender + " | Áö¿ª¿¡ µµÂøÇß½À´Ï´Ù!", room);
+                rm("@" + sender + " | ì§€ì—­ì— ë„ì°©í–ˆìŠµë‹ˆë‹¤!", room);
                 replier.reply(MapRPG.info(args));
                 var RegData = data(sender);
                 RegData["PLACE"] = args;
@@ -1495,7 +1495,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
                 FileStream.write(RPG_USER + sender + ".json", finalData);
             }
         } catch (e) {
-            rm(args + " Áö¿ªÀº Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.\n" + e + "\n" + e.lineNumber + "ÁÙ", room);
+            rm(args + " ì§€ì—­ì€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\n" + e + "\n" + e.lineNumber + "ì¤„", room);
             FileStream.remove(RPG_SETTING + "Maps/" + args + ".json");
         }
     }
